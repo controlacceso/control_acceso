@@ -79,21 +79,21 @@ html
             img.imagenSlider(src='/images/gradient4.jpg', alt='...')
             .carousel-caption
               p
-                | Utiliza un dispositivo electronico que sirve para recoger la presencia de las personas para llevar un control automatico de las mismas. Mediante la aplicacion web podras manejar la informacion recibida
+                | App + dispositivo electrónico para recoger la presencia de las personas para llevar un control automatico de las mismas.
               a#btncomoFunciona.btn.btn-primary(href='#comoFunciona') Cómo funciona
               
           .item
             img.imagenSlider(src='/images/fondoVistaProfesor.png', alt='...')
             .carousel-caption
               a#btndemo.btn.btn-primary(href='#demo') Probar demo
-              p
+              p.negro
                 | Prueba la demo para ver lo que ofrece nuestra aplicacion!
           .item
             img.imagenSlider(src='/images/gradient10.jpg', alt='...')
             .carousel-caption
               img#fotoInfo.img-responsive(src='/images/info.png')
               a#btncontacto.btn.btn-primary(href='#contacto') Contacta con nosotros
-              p
+              p.negro
                 | No dudes en contactar con nosotros para recibir informacion personalizada sobre el producto
         // Controls
         a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
@@ -139,6 +139,8 @@ html
       div
         #headerDemo.page-header
           h1 Demo
+        p
+         | Envíanos tu correo para que podamos facilitarte un usuario y contraseña para probar la demo
         form#formContactDemo.form-group
           #okDemo.alert.alert-success.fade.in(style='display:none')
             strong OK
@@ -151,8 +153,7 @@ html
           br
           input#submitContactDemo.btn.btn-primary(type='submit', value='Enviar')
         button#irADemo.btn.btn-primary Acceder a la demo
-        p
-          | Enviamos tu correo para que podamos facilitarte un usuario y contraseña para probar la demo
+        
     section#espacio
     // *************FIN demo*****************
     section#espacio
