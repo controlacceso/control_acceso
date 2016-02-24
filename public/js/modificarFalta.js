@@ -36,6 +36,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		console.log(datos);
 		buscarFaltaId(datos[0].id)
 		.done(function(result) {
+			$("#footer").css("bottom","auto");
     		var formulario = "<form class='form-group' action='/updateFalta' id='formUpdate' name='formUpdate' method='post'>";
     			formulario += "<div class='form-inline has-success'>";
 	    		formulario += "<div class='input-group'>";

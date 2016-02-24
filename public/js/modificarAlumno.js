@@ -45,7 +45,8 @@ $('img').attr("src",'/images/sshot-1.png');
 	$('#resultado').on("click",".celda",function () {
 		var datos = $(this).contents();
 		buscarAlumnoPorId(datos[0].id)
-		.done(function(result) {	
+		.done(function(result) {
+		$("#footer").css("bottom","auto");	
     		var formulario = "<form class='form-group' action='/modificarAlumno' id='formUpdate' name='formUpdate'>";
     		formulario += "<div class='form-inline'>";
     		formulario += "<div class='input-group'>";
