@@ -126,7 +126,7 @@ $('img').attr("src",'/images/sshot-1.png');
 	    		formulario += "</div>";
 	  			formulario += "</div><br/>";
 	  			   if(result[0].tarjeta_activada == 1){
-				formulario += "<div class='form-inline'>";
+						formulario += "<div class='form-inline'>";
 	    				formulario += "<div class='input-group'>";
 					    formulario += "<label id='labelTarjeta_activadaProfesor' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
 					    formulario += "<label id='labeltarjeta1Profesor' for='tarjetaProfesor1'>SI</label>";
@@ -135,15 +135,15 @@ $('img').attr("src",'/images/sshot-1.png');
 					    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
 						formulario += "</br>";
 						formulario += "</div>";
-	  					formulario += "</div><br/>";
+	  					formulario += "</div><br/>";		  					
 					} else {
 						formulario += "<div class='form-inline'>";
 	    				formulario += "<div class='input-group'>";
 					    formulario += "<label id='labelTarjeta_activadaProfesor' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
 					    formulario += "<label id='labeltarjeta1Profesor' for='tarjetaProfesor1'>SI</label>";
-					    formulario += "<input id='tarjetaProfesor1' type='radio' name='tarjeta_activada' value='1' class='radio form-control'/><br/>";
+					    formulario += "<input id='tarjetaProfesor1' type='radio' name='tarjeta_activada' value='1' class='radio form-control' />";
 					    formulario += "<label id='labeltarjetaProfesor' for='tarjetaProfesor'>NO  </label>";
-					    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control'checked='checked'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
+					    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control' checked='checked'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
 						formulario += "</br>";
 						formulario += "</div>";
 	  					formulario += "</div><br/>";					
@@ -156,24 +156,26 @@ $('img').attr("src",'/images/sshot-1.png');
 	    		formulario += "</div>";
 	  			formulario += "</div><br/>";
 	  			   if(result[0].admin == 1){
-				formulario += "<div class='form-inline'>";
+					formulario += "<div class='form-inline'>";
 	    				formulario += "<div class='input-group'>";
 					    formulario += "<label id='labelAdminProfesor' for='admin' class='input-group-addon'>ADMINISTRADOR</label><br/>";
-					    formulario += "<label id='labeladminProfesor1' for='adminProfesor1'>SI</label>";
+					    formulario += "<label id='labeladmin1Profesor' for='adminProfesor1'>SI</label>";
 					    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control' checked='checked'/>";
 					    formulario += "<label id='labeladminProfesor' for='adminProfesor'>NO  </label>";
 					    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
 						formulario += "</br>";
 						formulario += "</div>";
-	  					formulario += "</div><br/>";
+	  					formulario += "</div><br/>";	  					
+
+
 					} else {
-						formulario += "<div class='form-inline'>";
+					formulario += "<div class='form-inline'>";
 	    				formulario += "<div class='input-group'>";
 					    formulario += "<label id='labelAdminProfesor' for='admin' class='input-group-addon'>ADMINISTRADOR</label><br/>";
-					    formulario += "<label id='labeladminProfesor1' for='adminProfesor1'>SI</label>";
-					    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control'/><br/>";
+					    formulario += "<label id='labeladmin1Profesor' for='adminProfesor1'>SI</label>";
+					    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control' />";
 					    formulario += "<label id='labeladminProfesor' for='adminProfesor'>NO  </label>";
-					    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control'checked='checked'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
+					    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control' checked='checked'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
 						formulario += "</br>";
 						formulario += "</div>";
 	  					formulario += "</div><br/>";					

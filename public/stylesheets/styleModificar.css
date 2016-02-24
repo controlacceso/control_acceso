@@ -5932,7 +5932,7 @@ h1{
 }
 #labelAdminProfesor{
   position: relative;
-  left: -95px;
+  left: -60px;
   font-size: 15px; 
   width:270px !important;
   padding-left: 0px !important;
@@ -6045,7 +6045,7 @@ h1{
   margin-bottom: 10px !important; 
 }
 
-#labeladminProfesor1{
+#labeladmin1Profesor{
   position: absolute;
   left: 290px !important;
   top: 15px !important;
@@ -6056,8 +6056,8 @@ h1{
 }
 #labeladminProfesor{
   position: absolute;
-  left: 275px !important;
-  top: 45px !important;
+  left: 330px !important;
+  top: 15px !important;
   width:20px !important;
   margin-left: 65px;
   margin-right: 50px;
