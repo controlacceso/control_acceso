@@ -89,6 +89,20 @@ horario_grupo.buscarHorarioGrupoPorId = function (id_horario_grupo,callback) {
 	}//if
 }//horario_grupo.buscarHorarioGrupoPorId
 
+horario_grupo.buscarHorarioGrupoPorId2 = function (id_horario_grupo,callback) {							
+	if(connection){	
+		var sql = 'SELECT id_horario_grupo,dia_semana, hora_inicio, hora_final, asignaturas.nombre AS nombreAsignatura, aulas.numero, grupos.nombre_grupo FROM horario_grupos LEFT JOIN grupos ON horario_grupos.id_grupo = grupos.id_grupo LEFT JOIN asignaturas ON horario_grupos.id_asignatura = asignaturas.id_asignatura LEFT JOIN aulas ON horario_grupos.id_aula = aulas.id_aula WHERE grupos.nombre_grupo  LIKE ' + connection.escape(nombre+'%');
+		connection.query(sql, function (error, row){
+			if (error) {
+				throw error;
+				console.log(error);
+			}else{
+				callback(null,row);
+			}//else
+		});//connection.query
+	}//if
+}//horario_grupo.buscarHorarioGrupoPorId
+
 /*
 *	BUSCAR horario_grupo por nombre
 */

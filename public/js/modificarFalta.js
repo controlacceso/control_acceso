@@ -20,16 +20,16 @@ $('img').attr("src",'/images/sshot-1.png');
 	};
 
 	
-	$('#nombrebusqueda').keyup(function(event) {
-		$("#footer").css("bottom","auto");
+	$('#nombrebusquedaFalta').keyup(function(event) {
 		buscarFaltas();
 	});
 
 	$('#form').submit(function(event) {
 		event.preventDefault();
-		$("#footer").css("bottom","auto");
 		buscarFaltas();
+
 	});
+
 
 	$('#resultado').on("click",".celda",function () {
 		var datos = $(this).contents();
@@ -176,6 +176,11 @@ $('img').attr("src",'/images/sshot-1.png');
 					resp += "</td></tr></table>";
 				};
 				$('#resultado').html(resp);
+					if($("#resultado").children('table').length<=1){
+						$("#footer").css("bottom",0);
+					} else {
+						$("#footer").css("bottom","auto");
+					}
 			}
 		})//ajax
 		.done(function() {
@@ -212,7 +217,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				url: '/configFalta/borrarFalta',
 				type: 'post',
 				dataType: 'html',
-				data: {'id_faltas':$('#resultado #id_faltas').val()},
+				data: {'id_faltas':$('#resultado #id_faltasFalta').val()},
 				success:function(data){
 				}//success
 			})//ajax

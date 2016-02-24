@@ -310,6 +310,11 @@ $('img').attr("src",'/images/sshot-1.png');
 					resp += "</td></tr></table>";
 				};
 				$('#resultado').html(resp);
+				if($("#resultado").children('table').length<=1){
+						$("#footer").css("bottom",0);
+					} else {
+						$("#footer").css("bottom","auto");
+					}
 			}
 		})//ajax
 		.done(function() {
