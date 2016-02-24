@@ -128,7 +128,7 @@ $('img').attr("src",'/images/sshot-1.png');
         $('#mensaje').insertAfter(lugar);
         $('#mensaje').show(1000, function(){        
         });
-    }
+    }//.showAlertValidate
 
     function showAlert(lugar,tipo,texto) {
        if (tipo=="error"){
@@ -141,7 +141,7 @@ $('img').attr("src",'/images/sshot-1.png');
        $('#mensaje').show(1000, function(){
 
        });
-    }
+    }//.showAlert
 
     function showAlertRedirect(lugar,tipo,texto,url) {
        if (tipo=="error"){
@@ -157,4 +157,4 @@ $('img').attr("src",'/images/sshot-1.png');
          window.location.replace(url);   
         }, 4000);
        });
-    }
+    }//.showAlertRedirect

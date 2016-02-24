@@ -117,7 +117,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
     		console.log("error crear formulario");
 		});
-	});//Formulario modificar y borrar
+	});//$('#resultado').on("click",".celda",function () {
 	
 	$('#resultado').on("click","#btnModificar",function () {
 		$("#formUpdate").validate({
@@ -233,7 +233,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarProfesores
+	}//function buscarAsignaturaId
 	
 	//Al clicar en borrar el alumno
 	$('#resultado').on("click","#btnBorrar",function(event) {
@@ -259,7 +259,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				console.log("error borrar");
 			})//fail
 		}//if confirm
-	});//click borrar formulario asiganura
+	});//$('#resultado').on("click","#btnBorrar",function(event) {
 	
 });//ready
 
@@ -285,7 +285,7 @@ $('img').attr("src",'/images/sshot-1.png');
         $('#mensaje').insertAfter(lugar);
         $('#mensaje').show(1000, function(){        
         });
-    }
+    }//.showAlertValidate
 
     function showAlert(lugar,tipo,texto) {
        if (tipo=="error"){
@@ -298,7 +298,7 @@ $('img').attr("src",'/images/sshot-1.png');
        $('#mensaje').show(1000, function(){
 
        });
-    }
+    }//.showAlert
 
     function showAlertRedirect(lugar,tipo,texto,url) {
        if (tipo=="error"){
@@ -314,4 +314,4 @@ $('img').attr("src",'/images/sshot-1.png');
          window.location.replace(url);   
         }, 4000);
        });
-    }
+    }//.showAlertRedirect

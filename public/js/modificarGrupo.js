@@ -81,7 +81,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
     		console.log("error crear formulario");
 		});
-	});//Formulario modificar y borrar
+	});//$('#resultado').on("click",".celda",function () {
 	
 	$('#resultado').on("click","#btnModificar",function () {
 		$("#formUpdate").validate({
@@ -132,7 +132,7 @@ $('img').attr("src",'/images/sshot-1.png');
 	        }//submitHandler
 	    });//Validate
 	  //$( "#target" ).submit();
-	});
+	});//$('#resultado').on("click","#btnModificar",function () {
 
 	//Funcion con ajax para recoger datos alumnos y crear tabla
 	function buscarGrupos () {
@@ -176,7 +176,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarProfesores
+	}//function buscarGrupoId
 	
 			//Al clicar en borrar el alumno
 	$('#resultado').on("click","#btnBorrar",function(event) {
@@ -201,7 +201,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				console.log("error borrar");
 			})//fail
 		}//if confirm
-	});//click borrar formulario asiganura
+	});//$('#resultado').on("click","#btnBorrar",function(event) {
 	
 });//ready
 
@@ -226,7 +226,7 @@ $('img').attr("src",'/images/sshot-1.png');
         $('#mensaje').insertAfter(lugar);
         $('#mensaje').show(1000, function(){        
         });
-    }
+    }//showAlertValidate
 
     function showAlert(lugar,tipo,texto) {
        if (tipo=="error"){
@@ -239,7 +239,7 @@ $('img').attr("src",'/images/sshot-1.png');
        $('#mensaje').show(1000, function(){
 
        });
-    }
+    }//showAlert
 
     function showAlertRedirect(lugar,tipo,texto,url) {
        if (tipo=="error"){
@@ -255,58 +255,4 @@ $('img').attr("src",'/images/sshot-1.png');
          window.location.replace(url);   
         }, 4000);
        });
-    }function showAlertValidate(lugar,texto) {
-    $('#mensaje').attr('class','alert alert-warning fade in');
-    $('#mensaje span').html(texto);
-    $('#mensaje').insertAfter(lugar);
-    $('#mensaje').show(1000, function(){
-                });
-    }
-
-
-function showAlert(lugar,tipo,texto) {
-
-    if (tipo=="error"){
-        $('#mensaje').attr('class','alert alert-danger fade in');
-    }else {
-        $('#mensaje').attr('class','alert alert-success fade in');
-    }
-    $('#mensaje span').html(texto);
-    $('#mensaje').insertAfter(lugar);
-    $('#mensaje').show(1000, function(){
-                });
-
-    }
-
-function showAlertRedirect(lugar,tipo,texto,url) {
-
-    if (tipo=="error"){
-        $('#mensaje2').attr('class','alert alert-danger fade in');
-    }else {
-        $('#mensaje2 strong').html(' ');
-        $('#mensaje2').attr('class','alert alert-success fade in');
-    }
-    $('#mensaje2 span').html(texto);
-    $('#mensaje2').insertAfter(lugar);
-    $('#mensaje2').slideToggle("slow", function(){
-      window.setTimeout(function() {
-	    window.location.replace(url);
-	}, 4000);
-    });
-
- }
-
-   function controlFooter(){ 
-     /*el alto que tiene el navegador*/
-     $alto_navegador= $(window).height();
-     /*el alto que tiene el contenido de la pagina*/
-     $alto_documento= $(document).height(); 
-     /*  aqui condicionamos si el alto del contenido 
-      *  es mayor que
-      *  el alto del navegador*/
-     if ($alto_documento>$alto_navegador){
-         $("#footer").css({"bottom":"auto"})
-     }else if($alto_documento>=$alto_navegador){
-         $("#footer").css({"bottom":"0px"})
-     } 
- }//controlFooter
+    }//showAlertRedirect

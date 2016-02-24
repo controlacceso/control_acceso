@@ -143,7 +143,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		}).fail(function() {
     		console.log("error crear formulario");
 		});
-	});//Formulario modificar y borrar
+	});//$('#resultado').on("click",".celda",function () {
 
 	$('#resultado').on("click","#btnModificar",function () {
 		$("#formUpdate").validate({
@@ -290,7 +290,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		        	}//.else	        
 		        }//submitHandler
 	    });//Validate
-	});
+	});//.$('#resultado').on("click","#btnModificar",function () {
 
 	
 	//Funcion con ajax para recoger datos alumnos y crear tabla
@@ -361,7 +361,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				console.log("error borrar");
 			})//fail
 		}//if confirm
-	});//click borrar formulario alumno
+	});//$('#resultado').on("click","#btnBorrar",function(event) {
 
 	//funcion para buscar las asignaturas de un grupo
 	$('#resultado').on("change","#gruposdelAlumno" || "#gruposTodos",function () {
@@ -551,7 +551,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarTodosLosGrupos
+	}//function buscarAsignaturasNoConvalidadasDelAlumno
 
 		$('#resultado').on("change","#AsignaturaGrupo" || "#AsignaturaGrupoRestante" || "#gruposdelAlumno"  || "#gruposTodos" ,function () {
 			$(":checkbox").click(function(){
@@ -562,7 +562,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				$(this).attr("checked",true)
 			}
 			});//$(":checkbox").click(function()
-		});
+		});//.$('#resultado').on("change","#AsignaturaGrupo" || "#AsignaturaGrupoRestante" || "#gruposdelAlumno"  || "#gruposTodos" ,function () {
 
 		$('#resultado').on("click","#btnMostrarGrupos",function(event) {
 			if ($('#resultado #btnMostrarGrupos').html() == "Mostrar Los Grupos"){
@@ -572,10 +572,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				$('#resultado #gruposTodos').hide();
 		 		$('#resultado #btnMostrarGrupos').html("Mostrar Los Grupos");				
 			}
-		});//click borrar formulario alumno
-
-
-
+		});//$('#resultado').on("click","#btnMostrarGrupos",function(event) {
 
 });//ready
 
@@ -600,7 +597,7 @@ $('img').attr("src",'/images/sshot-1.png');
         $('#mensaje').insertAfter(lugar);
         $('#mensaje').show(1000, function(){        
         });
-    }
+    }//.showAlertValidate
 
     function showAlert(lugar,tipo,texto) {
        if (tipo=="error"){
@@ -613,7 +610,7 @@ $('img').attr("src",'/images/sshot-1.png');
        $('#mensaje').show(1000, function(){
 
        });
-    }
+    }//.showAlert
 
     function showAlertRedirect(lugar,tipo,texto,url) {
        if (tipo=="error"){
@@ -629,4 +626,4 @@ $('img').attr("src",'/images/sshot-1.png');
          window.location.replace(url);   
         }, 4000);
        });
-    }
+    }//.showAlertRedirect

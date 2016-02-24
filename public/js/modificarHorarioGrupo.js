@@ -117,7 +117,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
     		console.log("error crear formulario");
 		});
-	});//Formulario modificar y borrar
+	});//$('#resultado').on("click",".celda",function () {
 
 		function mostrarTodasLasAulasIdNumero (id_aula) {
 			var result = id_aula;
@@ -151,7 +151,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 			console.log("error");
 		})//fail
-	}//function buscarAsignaturas
+	}//function mostrarTodasLasAulasIdNumero
 
 		function buscarTodasLasAsignaturas (id_asignatura) {//FALTA EL POST
 			var result = id_asignatura;
@@ -185,7 +185,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 			console.log("error");
 		})//fail
-	}//function buscarAsignaturas
+	}//function buscarTodasLasAsignaturas
 	
 		function mostrarTodosLosGruposIdNombre (id_grupo) {
 			var result = id_grupo;
@@ -219,7 +219,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 			console.log("error");
 		})//fail
-	}//function buscarAsignaturas
+	}//function mostrarTodosLosGruposIdNombre
 
 	
 	
@@ -291,7 +291,7 @@ $('img').attr("src",'/images/sshot-1.png');
 	        }//submitHandler
 	    });//Validate
 	  //$( "#target" ).submit();
-	});
+	});//$('#resultado').on("click","#btnModificar",function () {
 
 	//Funcion con ajax para recoger datos alumnos y crear tabla
 	function buscarHorarioGrupos () {
@@ -336,7 +336,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarProfesores
+	}//function buscarHorarioGrupoId
 	
 			//Al clicar en borrar el alumno
 	$('#resultado').on("click","#btnBorrar",function(event) {
@@ -362,7 +362,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				console.log("error borrar");
 			})//fail
 		}//if confirm
-	});//click borrar formulario asiganura
+	});//$('#resultado').on("click","#btnBorrar",function(event) {
 	
 });//ready
 
@@ -387,7 +387,7 @@ $('img').attr("src",'/images/sshot-1.png');
         $('#mensaje').insertAfter(lugar);
         $('#mensaje').show(1000, function(){        
         });
-    }
+    }//.showAlertValidate
 
     function showAlert(lugar,tipo,texto) {
        if (tipo=="error"){
@@ -400,7 +400,7 @@ $('img').attr("src",'/images/sshot-1.png');
        $('#mensaje').show(1000, function(){
 
        });
-    }
+    }//.showAlert
 
     function showAlertRedirect(lugar,tipo,texto,url) {
        if (tipo=="error"){
@@ -416,4 +416,4 @@ $('img').attr("src",'/images/sshot-1.png');
          window.location.replace(url);   
         }, 4000);
        });
-    }
+    }//.showAlertRedirect
