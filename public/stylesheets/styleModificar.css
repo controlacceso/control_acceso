@@ -177,8 +177,8 @@ h1{
   left: 52px !important;
   top: 30px !important;
   width:20px !important;
-  padding-left: -10px !important;
-  margin-left: 50px;
+  padding-left: -20px !important;
+  margin-left: 10px !important;
   margin-right: 50px;
 }
 #radioAsignatura1,#radioAsignatura,#tarjeta1Alumno,#tarjetaAlumno,#adminProfesor1,#adminProfesor,
@@ -191,7 +191,7 @@ h1{
   left: 75px !important;
   top: 30px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: 65px  !important;
   margin-right: 50px; 
 }
 
@@ -1867,6 +1867,16 @@ h1{
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
+#labelAdminProfesor{
+  position: relative;
+  left: -50px !important;
+  font-size: 13px; 
+  width:235px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;  
+}
 #labelradio1Asignatura{
   position: absolute;
   left: 220px !important;
@@ -1951,19 +1961,20 @@ h1{
 
 #labeladmin1Profesor{
   position: absolute;
-  left: 260px !important;
+  left: 250px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
-  margin-right: 50px; 
+  margin-left: 10px  !important;
+  margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 245px !important;
-  top: 55px !important;
+  left: 90px !important;
+  margin-top: -40px !important;
   width:20px !important;
-  margin-left: 65px;
+  padding-left: -10px !important;
+  margin-left: 80px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -3741,7 +3752,24 @@ h1{
   margin-left: 80px !important;
   margin-bottom: 10px !important;
 }
-
+#labeladmin1Profesor{
+  position: absolute;
+  left: 260px !important;
+  top: 15px !important;
+  width:20px !important;
+  padding-left: -10px !important;
+  margin-left: 10px !important;
+  margin-right: 50px;
+}
+#labeladminProfesor{
+  position: absolute;
+  left: 195px !important;
+  top: 10px !important;
+  width:20px !important;
+  margin-left: 65px !important;
+  margin-top: -40px !important;
+  margin-right: 50px;
+}
 #labeladmin1Profesor{
   position: absolute;
   left: 90px !important;
@@ -3979,22 +4007,22 @@ h1{
   margin-left: 90px !important;
   margin-bottom: 10px !important;
 }
-
 #labeladmin1Profesor{
   position: absolute;
-  left: 120px !important;
+  left: 260px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
-  margin-right: 50px; 
+  margin-left: -135px !important;
+  margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 105px !important;
-  top: 55px !important;
+  left: 195px !important;
+  top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: -35px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -4217,19 +4245,20 @@ h1{
 }
 #labeladmin1Profesor{
   position: absolute;
-  left: 120px !important;
+  left: 260px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
-  margin-right: 50px; 
+  margin-left: -135px !important;
+  margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 105px !important;
-  top: 55px !important;
+  left: 195px !important;
+  top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: -25px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -4456,19 +4485,20 @@ h1{
 
 #labeladmin1Profesor{
   position: absolute;
-  left: 130px !important;
+  left: 260px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
+  margin-left: -120px !important;
   margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 115px !important;
-  top: 55px !important;
+  left: 195px !important;
+  top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: -15px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -4692,19 +4722,20 @@ h1{
 
 #labeladmin1Profesor{
   position: absolute;
-  left: 150px !important;
+  left: 260px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
-  margin-right: 50px; 
+  margin-left: -110px !important;
+  margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 135px !important;
-  top: 55px !important;
+  left: 195px !important;
+  top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: 0px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -4929,21 +4960,23 @@ h1{
   margin-bottom: 10px !important; 
 }
 
+
 #labeladmin1Profesor{
   position: absolute;
-  left: 195px !important;
+  left: 260px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
+  margin-left: -55px !important;
   margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 180px !important;
-  top: 55px !important;
+  left: 195px !important;
+  top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: 65px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -5105,7 +5138,7 @@ h1{
 }
 #labelAdminProfesor{
   position: relative;
-  left: -80px;
+  left: -50px;
   font-size: 15px; 
   width:235px !important;
   padding-left: 0px !important;
@@ -5218,19 +5251,20 @@ h1{
 
 #labeladmin1Profesor{
   position: absolute;
-  left: 250px !important;
+  left: 260px !important;
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
+  margin-left: 0px !important;
   margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 235px !important;
-  top: 55px !important;
+  left: 180px !important;
+  top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: 135px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{
@@ -5677,7 +5711,7 @@ h1{
 }
 #labelAdminProfesor{
   position: relative;
-  left: -80px;
+  left: -55px;
   font-size: 15px; 
   width:245px !important;
   padding-left: 0px !important;
@@ -5794,15 +5828,16 @@ h1{
   top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
+  margin-left: 5px !important;
   margin-right: 50px;
 }
 #labeladminProfesor{
   position: absolute;
-  left: 245px !important;
+  left: 195px !important;
   top: 50px !important;
   width:20px !important;
-  margin-left: 65px;
+  margin-left: 125px !important;
+  margin-top: -35px !important;
   margin-right: 50px;
 }
 #labeltarjeta1Profesor{

@@ -130,26 +130,26 @@ h1{
 }
 #labelradio1Asignatura{
   position: absolute;
-  left: 52px !important;
-  top: 30px !important;
+  left: 75px !important;
+  top: 15px !important;
   width:20px !important;
   padding-left: -10px !important;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: -18px !important;  
+  padding-left: 10px; 
+  margin-right: 50px; 
 }
 #radioAsignatura1{
   width:20px !important;
-  margin-left: 20px;  
+  margin-left: 20px;
+  margin-top: 8px;
 }
 #labelradioAsignatura{
   position: absolute;
-  left: 75px !important;
-  top: 30px !important;
+  left: 95px !important;
+  top: 15px !important;
   width:20px !important;
+  padding-left: 10px; 
   margin-left: 65px;
   margin-right: 50px;
-  margin-top: -18px !important;  
 }
 #radioAsignatura{
   width:20px !important;
