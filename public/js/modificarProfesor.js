@@ -56,6 +56,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		var datos = $(this).contents();
 		buscarProfesorPorId(datos[0].id)
 		.done(function(result) {
+			$("#footer").css("bottom","auto");
     		var formulario = "<form class='form-group' action='/modificarProfesor' id='formUpdate' name='formUpdate'>";
 	    		formulario += "<div class='form-inline'>";
 	    		formulario += "<div class='input-group'>";

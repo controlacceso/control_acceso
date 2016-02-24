@@ -40,6 +40,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		var datos = $(this).contents();
 		buscarHorarioProfesorId(datos[0].id)
 		.done(function(result) {
+			$("#footer").css("bottom",0);
     		var formulario = "<form class='form-group' action='/updateHorarioGrupo' id='formUpdate' name='formUpdate' method='post'>";
 	    		formulario += "<div class='form-inline has-success'>";
 	    		formulario += "<div class='input-group'>";

@@ -39,7 +39,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		var datos = $(this).contents();
 		buscarAsignaturaId(datos[0].id)
 		.done(function(result) {
-			$("#footer").css("bottom","auto");
+			$("#footer").css("bottom",0);
     		var formulario = "<form class='form-group' action='/modificarAsignatura' id='formUpdate' name='formUpdate' method='post'>";
     			formulario += "<div class='form-inline'>";
     			formulario += "<div class='input-group'>";
