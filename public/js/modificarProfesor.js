@@ -1,6 +1,7 @@
 $(document).ready(function() {
-	    controlFooter();
-	    $('img').attr("src",'/images/sshot-1.png');
+controlFooter();
+$('img').attr("src",'/images/sshot-1.png');
+
     jQuery.validator.addMethod("lettersonly", function(value, element) { 
     return this.optional(element) || /^[a-zA-Z\s]*$/.test(value);
 	},"Please enter only letters");
@@ -11,7 +12,6 @@ $(document).ready(function() {
         }
     });
 
-    //regla correo
     jQuery.validator.addMethod("correo", function(value, element) {
         return this.optional(element) || /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i.test(value);
     });
@@ -22,7 +22,6 @@ $(document).ready(function() {
         return hash;
     }, 'Hash');
 
-	//reglas
 	var reglas = {
 		dni:{required:true,dni:true},
         nombre:{required:true,lettersonly:true},
@@ -31,7 +30,7 @@ $(document).ready(function() {
 		passwordnuevo:{convertHash:true},
         num_tarjeta:{required:true},
 	};
-	//mensajes
+
 	var mensajes = {
 		dni:{required:"",dni:""},
         nombre:{required:"",lettersonly:""},
@@ -41,13 +40,11 @@ $(document).ready(function() {
         num_tarjeta:{required:""},
 	};
 
-	//Buscar alumnos al escribir
 	$('#nombrebusquedaProfesor').keyup(function(event) {
 		$("#footer").css("bottom","auto");
 		buscarProfesores();
 	});
 
-	//Buscar alumnos al clicar Buscar
 	$('#form').submit(function(event) {
 		event.preventDefault();
 		$("#footer").css("bottom","auto");
@@ -60,148 +57,148 @@ $(document).ready(function() {
 		buscarProfesorPorId(datos[0].id)
 		.done(function(result) {
     		var formulario = "<form class='form-group' action='/modificarProfesor' id='formUpdate' name='formUpdate'>";
-    		formulario += "<div class='form-inline'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='id_profesor' id='labelIdProfesor' class='input-group-addon'>ID PROFESOR</label>";
-    		formulario += "<input type='text' id='Id_profesor' name='id_profesor' class='form-control' value='"+result[0].id_profesor+"'readonly>";
-    		formulario += "<span id='Id_profesor1' class='glyphicon form-control-feedback'></span>";    		    		    		
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-    		formulario += "<div class='form-inline' id='alertDni'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='dni' id='labelDniProfesor' class='input-group-addon'>DNI</label>";
-    		formulario += "<input type='text' id='dniProfesor' name='dni' class='form-control has-feedback' value='"+result[0].dni+"'>";
-    		formulario += "<span id='dniProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-    		formulario += "<div id='mensaje' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp'> Dni ya existente</span></div>";	    		    		
-    		formulario += "<div class='form-inline' id='alertNombre'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='nombre' id='labelNombreProfesor' class='input-group-addon'>NOMBRE</label>";
-    		formulario += "<input type='text' id='nombreProfesor' name='nombre' class='form-control has-feedback' value='"+result[0].nombre+"'>";
-    		formulario += "<span id='nombreProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-    		formulario += "<div class='form-inline' id='alertApellidos'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='apellidos' id='labelApellidosProfesor' class='input-group-addon'>APELLIDOS</label>";
-    		formulario += "<input type='text' id='apellidosProfesor' name='apellidos' class='form-control has-feedback' value='"+result[0].apellidos+"'>";
-    		formulario += "<span id='apellidosProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-    		formulario += "<div class='form-inline' id='alertCorreo'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='correo' id='labelCorreoProfesor' class='input-group-addon'>CORREO</label>";
-    		formulario += "<input type='text' id='correoProfesor' name='correo' class='form-control has-feedback' value='"+result[0].correo+"'>";
-    		formulario += "<span id='correoProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";    		
-    		formulario += "<input type='hidden' id='passwordviejo' name='passwordviejo' class='form-control' value='"+result[0].password+"'>";
-    		formulario += "<div class='form-inline'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='password' id='labelPasswordViejo' class='input-group-addon'>PASSWORD VIEJO</label>";
-    		formulario += "<input type='password' id='passwordProfesor' name='password' class='form-control has-feedback' value=''>";
-    		formulario += "<span id='passwordProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-    		formulario += "<input type='hidden' id='passwordhash' name='passwordhash' class='form-control'>";
-    		formulario += "<div class='form-inline' id='divpasswordnuevo' hidden>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='passwordnuevo' id='labelPassword' class='input-group-addon'>PASSWORD NUEVO</label>";
-    		formulario += "<input type='password' id='passwordNewProfesor' name='passwordnuevo' class='form-control has-feedback' value=''>";
-    		formulario += "<span id='passwordNewProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-  			formulario += "<div class='form-inline' id='divpasswordnuevorepetido' hidden>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='passwordnuevorepetido' id='labelPasswordR' class='input-group-addon'>REPETIR PASSWORD NUEVO</label>";
-    		formulario += "<input type='password' id='passwordNewRepProfesor' name='passwordnuevorepetido' class='form-control has-feedback' value=''>";
-    		formulario += "<span id='passwordNewRepProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-    		formulario += "<input type='hidden' id='pass' name='pass' class='form-control'>";
-    		formulario += "<img id='fotoProfesorPre' alt='fotoProfesor' src='data:img/png;base64,"+result[0].foto+"' width='100' height='100'/>";
-    		formulario += "<div class='form-inline' id='alertFoto'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='foto' id='labelFotoProfesor' class='input-group-addon'>FOTO</label>";
-    		formulario += "<input type='file' id='fotoProfesor' name='foto' class='form-control  has-feedback'>";
-    		formulario += "<span id='fotoProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-  			   if(result[0].tarjeta_activada == 1){
-			formulario += "<div class='form-inline'>";
-    				formulario += "<div class='input-group'>";
-				    formulario += "<label id='labelTarjeta_activadaProfesor' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
-				    formulario += "<label id='labeltarjeta1Profesor' for='tarjetaProfesor1'>SI</label>";
-				    formulario += "<input id='tarjetaProfesor1' type='radio' name='tarjeta_activada' value='1' class='radio form-control' checked='checked'/>";
-				    formulario += "<label id='labeltarjetaProfesor' for='tarjetaProfesor'>NO  </label>";
-				    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
-					formulario += "</br>";
-					formulario += "</div>";
-  					formulario += "</div><br/>";
-				} else {
-					formulario += "<div class='form-inline'>";
-    				formulario += "<div class='input-group'>";
-				    formulario += "<label id='labelTarjeta_activadaProfesor' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
-				    formulario += "<label id='labeltarjeta1Profesor' for='tarjetaProfesor1'>SI</label>";
-				    formulario += "<input id='tarjetaProfesor1' type='radio' name='tarjeta_activada' value='1' class='radio form-control'/><br/>";
-				    formulario += "<label id='labeltarjetaProfesor' for='tarjetaProfesor'>NO  </label>";
-				    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control'checked='checked'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
-					formulario += "</br>";
-					formulario += "</div>";
-  					formulario += "</div><br/>";					
-				}
-    		formulario += "<div class='form-inline' id='alertNum_tarj'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='num_tarjeta' id='labelNum_tarjProfesor' class='input-group-addon'>NUMERO TARJETA</label>";
-    		formulario += "<input type='text' id='num_tarjetaProfesor' name='num_tarjeta' class='form-control  has-feedback' value='"+result[0].num_tarjeta+"'>";
-    		formulario += "<span id='num_tarjetaProfesor1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-  			   if(result[0].admin == 1){
-			formulario += "<div class='form-inline'>";
-    				formulario += "<div class='input-group'>";
-				    formulario += "<label id='labelAdminProfesor' for='admin' class='input-group-addon'>ADMINISTRADOR</label><br/>";
-				    formulario += "<label id='labeladminProfesor1' for='adminProfesor1'>SI</label>";
-				    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control' checked='checked'/>";
-				    formulario += "<label id='labeladminProfesor' for='adminProfesor'>NO  </label>";
-				    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
-					formulario += "</br>";
-					formulario += "</div>";
-  					formulario += "</div><br/>";
-				} else {
-					formulario += "<div class='form-inline'>";
-    				formulario += "<div class='input-group'>";
-				    formulario += "<label id='labelAdminProfesor' for='admin' class='input-group-addon'>ADMINISTRADOR</label><br/>";
-				    formulario += "<label id='labeladminProfesor1' for='adminProfesor1'>SI</label>";
-				    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control'/><br/>";
-				    formulario += "<label id='labeladminProfesor' for='adminProfesor'>NO  </label>";
-				    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control'checked='checked'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
-					formulario += "</br>";
-					formulario += "</div>";
-  					formulario += "</div><br/>";					
-				}  			
-    		buscarAsignaturasQueImparte(result[0].id_profesor);
-    		formulario += "<div id='asignaturasdelProfesor'>";
-    		formulario += "</div>";
-			formulario += "<div class='form-inline'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label id='labelTipoGrupo' for='tipo' class='input-group-addon'>TIPO DE ASIGNATURA</label>";
-			formulario += "<select id='tipo' name='tipo' class='form-control'>";
-    		formulario += "<option value='Ambos'>Ambos</option>";
-    		formulario += "<option value='FP'>FP</option>";
-    		formulario += "<option value='Bachiller'>Bachiller</option>";    		
-     		formulario += "</select>";
-     		formulario += "</div>";
-  			formulario += "</div><br/>";	
-    		buscarTodasLasAsignaturas(result[0].id_profesor);
-    		formulario += "<div id='asignaturasTodas'>";
-    		formulario += "</div>";
-			formulario += "<input type='submit' id='btnModificar' class='btn btn-warning' value='Modificar'>";
-    		formulario += "&nbsp;<button id='btnBorrar' class='btn btn-danger'>Borrar</button>";
-    		formulario += "&nbsp;<a id='enlace2' href='/config' class='btn btn-primary'>Volver</a>";
-    		formulario += "<div id='mensaje2' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp2'> Clave ya existente</span></div>";
-    		formulario += "</form>";
+	    		formulario += "<div class='form-inline'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='id_profesor' id='labelIdProfesor' class='input-group-addon'>ID PROFESOR</label>";
+	    		formulario += "<input type='text' id='Id_profesor' name='id_profesor' class='form-control' value='"+result[0].id_profesor+"'readonly>";
+	    		formulario += "<span id='Id_profesor1' class='glyphicon form-control-feedback'></span>";    		    		    		
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	    		formulario += "<div class='form-inline' id='alertDni'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='dni' id='labelDniProfesor' class='input-group-addon'>DNI</label>";
+	    		formulario += "<input type='text' id='dniProfesor' name='dni' class='form-control has-feedback' value='"+result[0].dni+"'>";
+	    		formulario += "<span id='dniProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	    		formulario += "<div id='mensaje' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp'> Dni ya existente</span></div>";	    		    		
+	    		formulario += "<div class='form-inline' id='alertNombre'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='nombre' id='labelNombreProfesor' class='input-group-addon'>NOMBRE</label>";
+	    		formulario += "<input type='text' id='nombreProfesor' name='nombre' class='form-control has-feedback' value='"+result[0].nombre+"'>";
+	    		formulario += "<span id='nombreProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	    		formulario += "<div class='form-inline' id='alertApellidos'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='apellidos' id='labelApellidosProfesor' class='input-group-addon'>APELLIDOS</label>";
+	    		formulario += "<input type='text' id='apellidosProfesor' name='apellidos' class='form-control has-feedback' value='"+result[0].apellidos+"'>";
+	    		formulario += "<span id='apellidosProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	    		formulario += "<div class='form-inline' id='alertCorreo'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='correo' id='labelCorreoProfesor' class='input-group-addon'>CORREO</label>";
+	    		formulario += "<input type='text' id='correoProfesor' name='correo' class='form-control has-feedback' value='"+result[0].correo+"'>";
+	    		formulario += "<span id='correoProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";    		
+	    		formulario += "<input type='hidden' id='passwordviejo' name='passwordviejo' class='form-control' value='"+result[0].password+"'>";
+	    		formulario += "<div class='form-inline'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='password' id='labelPasswordViejo' class='input-group-addon'>PASSWORD VIEJO</label>";
+	    		formulario += "<input type='password' id='passwordProfesor' name='password' class='form-control has-feedback' value=''>";
+	    		formulario += "<span id='passwordProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	    		formulario += "<input type='hidden' id='passwordhash' name='passwordhash' class='form-control'>";
+	    		formulario += "<div class='form-inline' id='divpasswordnuevo' hidden>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='passwordnuevo' id='labelPassword' class='input-group-addon'>PASSWORD NUEVO</label>";
+	    		formulario += "<input type='password' id='passwordNewProfesor' name='passwordnuevo' class='form-control has-feedback' value=''>";
+	    		formulario += "<span id='passwordNewProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	  			formulario += "<div class='form-inline' id='divpasswordnuevorepetido' hidden>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='passwordnuevorepetido' id='labelPasswordR' class='input-group-addon'>REPETIR PASSWORD NUEVO</label>";
+	    		formulario += "<input type='password' id='passwordNewRepProfesor' name='passwordnuevorepetido' class='form-control has-feedback' value=''>";
+	    		formulario += "<span id='passwordNewRepProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	    		formulario += "<input type='hidden' id='pass' name='pass' class='form-control'>";
+	    		formulario += "<img id='fotoProfesorPre' alt='fotoProfesor' src='data:img/png;base64,"+result[0].foto+"' width='100' height='100'/>";
+	    		formulario += "<div class='form-inline' id='alertFoto'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='foto' id='labelFotoProfesor' class='input-group-addon'>FOTO</label>";
+	    		formulario += "<input type='file' id='fotoProfesor' name='foto' class='form-control  has-feedback'>";
+	    		formulario += "<span id='fotoProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	  			   if(result[0].tarjeta_activada == 1){
+				formulario += "<div class='form-inline'>";
+	    				formulario += "<div class='input-group'>";
+					    formulario += "<label id='labelTarjeta_activadaProfesor' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
+					    formulario += "<label id='labeltarjeta1Profesor' for='tarjetaProfesor1'>SI</label>";
+					    formulario += "<input id='tarjetaProfesor1' type='radio' name='tarjeta_activada' value='1' class='radio form-control' checked='checked'/>";
+					    formulario += "<label id='labeltarjetaProfesor' for='tarjetaProfesor'>NO  </label>";
+					    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
+						formulario += "</br>";
+						formulario += "</div>";
+	  					formulario += "</div><br/>";
+					} else {
+						formulario += "<div class='form-inline'>";
+	    				formulario += "<div class='input-group'>";
+					    formulario += "<label id='labelTarjeta_activadaProfesor' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
+					    formulario += "<label id='labeltarjeta1Profesor' for='tarjetaProfesor1'>SI</label>";
+					    formulario += "<input id='tarjetaProfesor1' type='radio' name='tarjeta_activada' value='1' class='radio form-control'/><br/>";
+					    formulario += "<label id='labeltarjetaProfesor' for='tarjetaProfesor'>NO  </label>";
+					    formulario += "<input id='tarjetaProfesor' type='radio' name='tarjeta_activada' value='0' class='radio form-control'checked='checked'/><span id='tarjetaProfesor11' class='glyphicon form-control-feedback'></span>";
+						formulario += "</br>";
+						formulario += "</div>";
+	  					formulario += "</div><br/>";					
+					}
+	    		formulario += "<div class='form-inline' id='alertNum_tarj'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='num_tarjeta' id='labelNum_tarjProfesor' class='input-group-addon'>NUMERO TARJETA</label>";
+	    		formulario += "<input type='text' id='num_tarjetaProfesor' name='num_tarjeta' class='form-control  has-feedback' value='"+result[0].num_tarjeta+"'>";
+	    		formulario += "<span id='num_tarjetaProfesor1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	  			   if(result[0].admin == 1){
+				formulario += "<div class='form-inline'>";
+	    				formulario += "<div class='input-group'>";
+					    formulario += "<label id='labelAdminProfesor' for='admin' class='input-group-addon'>ADMINISTRADOR</label><br/>";
+					    formulario += "<label id='labeladminProfesor1' for='adminProfesor1'>SI</label>";
+					    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control' checked='checked'/>";
+					    formulario += "<label id='labeladminProfesor' for='adminProfesor'>NO  </label>";
+					    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
+						formulario += "</br>";
+						formulario += "</div>";
+	  					formulario += "</div><br/>";
+					} else {
+						formulario += "<div class='form-inline'>";
+	    				formulario += "<div class='input-group'>";
+					    formulario += "<label id='labelAdminProfesor' for='admin' class='input-group-addon'>ADMINISTRADOR</label><br/>";
+					    formulario += "<label id='labeladminProfesor1' for='adminProfesor1'>SI</label>";
+					    formulario += "<input id='adminProfesor1' type='radio' name='admin' value='1' class='radio form-control'/><br/>";
+					    formulario += "<label id='labeladminProfesor' for='adminProfesor'>NO  </label>";
+					    formulario += "<input id='adminProfesor' type='radio' name='admin' value='0' class='radio form-control'checked='checked'/><span id='adminProfesor11' class='glyphicon form-control-feedback'></span>";
+						formulario += "</br>";
+						formulario += "</div>";
+	  					formulario += "</div><br/>";					
+					}  			
+	    		buscarAsignaturasQueImparte(result[0].id_profesor);
+	    		formulario += "<div id='asignaturasdelProfesor'>";
+	    		formulario += "</div>";
+				formulario += "<div class='form-inline'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label id='labelTipoGrupo' for='tipo' class='input-group-addon'>TIPO DE ASIGNATURA</label>";
+				formulario += "<select id='tipo' name='tipo' class='form-control'>";
+	    		formulario += "<option value='Ambos'>Ambos</option>";
+	    		formulario += "<option value='FP'>FP</option>";
+	    		formulario += "<option value='Bachiller'>Bachiller</option>";    		
+	     		formulario += "</select>";
+	     		formulario += "</div>";
+	  			formulario += "</div><br/>";	
+	    		buscarTodasLasAsignaturas(result[0].id_profesor);
+	    		formulario += "<div id='asignaturasTodas'>";
+	    		formulario += "</div>";
+				formulario += "<input type='submit' id='btnModificar' class='btn btn-warning' value='Modificar'>";
+	    		formulario += "&nbsp;<button id='btnBorrar' class='btn btn-danger'>Borrar</button>";
+	    		formulario += "&nbsp;<a id='enlace2' href='/config' class='btn btn-primary'>Volver</a>";
+	    		formulario += "<div id='mensaje2' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp2'> Clave ya existente</span></div>";
+	    		formulario += "</form>";
     		$('#resultado').html(formulario);
 		})
 		.fail(function() {
@@ -213,6 +210,7 @@ $(document).ready(function() {
 		$('#resultado #divpasswordnuevo').show();
 		$('#resultado #divpasswordnuevorepetido').show();
 	});
+
 	$('#resultado').on("click","#btnModificar",function () {
 		$("#formUpdate").validate({
 	        rules:reglas,
@@ -234,11 +232,10 @@ $(document).ready(function() {
 	                $("#tarjetaProfesor11").removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
 	            }
 	        } else {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+	            $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
 	        }
-	      
 	        },
 	        unhighlight: function(element) {
 	            if (element.type == "radio"){
@@ -275,7 +272,6 @@ $(document).ready(function() {
 	            } else if (error.attr("id") == "fotoProfesor-error"){
 	                showAlertValidate("#alertFoto"," Tamaño de la foto maximo 100Kb");
 	            }
-	            
 	        },
 	        submitHandler: function (form) {
 	        	if($('#passwordProfesor').val().length == 0){
@@ -381,17 +377,14 @@ $(document).ready(function() {
 				                console.log("error");
 				                $('#passwordProfesor').attr('disabled',false);
 					            })
-							            /*
-							            *   Form Submit Fin
-							            */
 						}//.else if (size > 102400)
 					}//.else if ($('#resultado #foto').val() == ''){
 	        	} else {
 	        		if(($('#passwordNewProfesor').val().length == 0) || ($('#passwordNewRepProfesor').val().length == 0)  ){
-	        		$('#passwordNewProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
-					$('#passwordNewProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');
-	        		$('#passwordNewRepProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
-					$('#passwordNewRepProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');						        	
+	        			$('#passwordNewProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
+						$('#passwordNewProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+	        			$('#passwordNewRepProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
+						$('#passwordNewRepProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');						        	
 	        		} else {
 	        			var hash = md5($('#passwordProfesor').val(), '2063c1608d6e0baf80249c42e2be5804');
         				$('#passwordhash').val(hash);
@@ -423,9 +416,9 @@ $(document).ready(function() {
 									            	$('#num_tarjetaProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
 									            	$('#num_tarjetaProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');		                
 								                	showAlert($('#resultado #alertNum_tarj'),"error"," Tarjeta ya existente");
-						    						}else if (data.err=="noasignatura"){
+						    					}else if (data.err=="noasignatura"){
 													showAlertValidate("#enlace2"," El profesor tiene que tener una asignatura");
-							    					}else if (data.dato=="ok"){
+							    				}else if (data.dato=="ok"){
 										        	$('#Id_profesor').closest('.form-inline').removeClass('has-error').addClass('has-success');
 										        	$('#Id_profesor1').removeClass('glyphicon-remove').addClass('glyphicon-ok');					                
 										        	$('#fotoProfesor').closest('.form-inline').removeClass('has-error').addClass('has-success');
@@ -471,17 +464,17 @@ $(document).ready(function() {
 									            $('#dniProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
 									            $('#dniProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');		                
 								                showAlert($('#resultado #alertDni'),"error"," DNI ya existente");
-								                } else if (data.err=="existeCorreo"){
+								            } else if (data.err=="existeCorreo"){
 									            $('#correoProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
 									            $('#correoProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');		                
 								                showAlert($('#resultado #alertCorreo'),"error"," Correo ya existente");
-								                } else if (data.err=="existeTarjeta"){
+								            } else if (data.err=="existeTarjeta"){
 									            $('#num_tarjetaProfesor').closest('.form-inline').removeClass('has-success').addClass('has-error');
 									            $('#num_tarjetaProfesor1').removeClass('glyphicon-ok').addClass('glyphicon-remove');		                
 								                showAlert($('#resultado #alertNum_tarj'),"error"," Tarjeta ya existente");
-								                }else if (data.err=="noasignatura"){
+								            }else if (data.err=="noasignatura"){
 												showAlertValidate("#enlace2"," El profesor tiene que tener una asignatura");
-							    				}else if (data.dato=="ok"){
+							    			}else if (data.dato=="ok"){
 										        $('#Id_profesor').closest('.form-inline').removeClass('has-error').addClass('has-success');
 										        $('#Id_profesor1').removeClass('glyphicon-remove').addClass('glyphicon-ok');					                
 										        $('#fotoProfesor').closest('.form-inline').removeClass('has-error').addClass('has-success');
@@ -490,16 +483,13 @@ $(document).ready(function() {
 										        $('#tarjetaProfesor11').removeClass('glyphicon-remove').addClass('glyphicon-ok');		                
 								                $('#resultado #mensaje').hide();
 								                showAlertRedirect($('#resultado #enlace2'),"ok"," Profesor modificado correctamente",'/config');
-								                }
-								                console.log("success");
-									            })
-									            .fail(function() {
+								            }
+								            console.log("success");
+									        })
+									        .fail(function() {
 							                console.log("error");
-							                $('#passwordProfesor').attr('disabled',false);
+							            $('#passwordProfesor').attr('disabled',false);
 							            })
-							            /*
-							            *   Form Submit Fin
-							            */
 							        }//.else if (size > 102400)
 							    }//.else if ($('#resultado #foto').val() == ''){
 	        				} else {
@@ -565,7 +555,6 @@ $(document).ready(function() {
 			dataType: 'json',
 			data:{ id_profesor:id },
 			success:function (data) {
-				console.log(data);
 				var resp = "";
 				resp += "<table id='asignaturasTodas'>";			
 				for (var i = 0; i < data.length; i++) {
@@ -596,7 +585,6 @@ $(document).ready(function() {
 			dataType: 'json',
 			data:{ id_profesor:id , tipo:tipo},
 			success:function (data) {
-				//console.log(data);
 				var resp = "";
 				resp += "<table id='asignaturasTodas'>";			
 				for (var i = 0; i < data.length; i++) {

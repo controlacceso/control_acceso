@@ -1,35 +1,33 @@
 $(document).ready(function() {
-	    controlFooter();
-	    $('img').attr("src",'/images/sshot-1.png');
+controlFooter();
+$('img').attr("src",'/images/sshot-1.png');
+
 	$.validator.addMethod("valueNotEquals", function(value, element, arg){
       return arg != value;
     }, "Value must not equal arg.");
 
-	//reglas
+
 	var reglas = {
 		nombre:{required:true},
 		tipo:{required:true,valueNotEquals: "default" }
 	};
-	//mensajes
+
 	var mensajes = {
 		nombre:{required:""},
 		tipo:{required:"",valueNotEquals: "" }
 	};
 
-	//Buscar alumnos al escribir
 	$('#nombrebusquedaGrupo').keyup(function(event) {
 		$("#footer").css("bottom","auto");
 		buscarGrupos();
 	});
 
-	//Buscar alumnos al clicar Buscar
 	$('#form').submit(function(event) {
 		event.preventDefault();
 		$("#footer").css("bottom","auto");
 		buscarGrupos();
 	});
 
-	//Crear formulario para modificar o borrar alumno al clicar en la celda
 	$('#resultado').on("click",".celda",function () {
 		var datos = $(this).contents();
 		buscarGrupoId(datos[0].id)
@@ -90,21 +88,20 @@ $(document).ready(function() {
 	        rules:reglas,
 			messages:mensajes,
 	        highlight: function(element) {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+	            $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
 	        },
 	        unhighlight: function(element) {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
-	                $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');      
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
+	            $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');      
 	        },
 			errorPlacement: function(error,element){
 			},
 	        submitHandler: function (form) {
 	            event.preventDefault();
 	            var data = $("#formUpdate").serializeArray();
-	            console.log(data);
 	            $.ajax({
 	                url: '/configGrupo/updateGrupo',
 	                type: 'post',
@@ -114,7 +111,6 @@ $(document).ready(function() {
 	                }
 	            })
 	            .done(function(data) {
-	                console.log(data)
 		                if (data.err=="existe"){
 		                	showAlert("#alertNombre","error"," Grupo ya existente ");
 			                $('#resultado #nombreGrupo').closest('.form-inline').removeClass('has-success').addClass('has-error');
@@ -137,10 +133,6 @@ $(document).ready(function() {
 	    });//Validate
 	  //$( "#target" ).submit();
 	});
-
-	
-
-
 
 	//Funcion con ajax para recoger datos alumnos y crear tabla
 	function buscarGrupos () {
