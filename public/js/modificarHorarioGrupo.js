@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	    controlFooter();
-	    $('img').attr("src",'/images/sshot-1.png');
-     $.validator.addMethod("valueNotEquals", function(value, element, arg){
+controlFooter();
+$('img').attr("src",'/images/sshot-1.png');
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
       return arg != value;
-     }, "Value must not equal arg.");
+    }, "Value must not equal arg.");
 
 	//reglas
 	var reglas = {
@@ -228,14 +228,14 @@ $(document).ready(function() {
 	        rules:reglas,
 			messages:mensajes,
 	        highlight: function(element) {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+	            $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
 	        },
 	        unhighlight: function(element) {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
-	                $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');      
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
+	            $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');      
 	        },
 			errorPlacement: function(error,element){
 			},
@@ -247,18 +247,17 @@ $(document).ready(function() {
                 	$('#hora_finalHorarioGrupo1').removeClass('glyphicon-ok').addClass('glyphicon-remove');  	            	
                 	showAlertValidate("#alertHoraInicio"," Hora Inicio no puede ser mayor a la Hora Final ");          	
             	} else {	
-	            event.preventDefault();
-	            var data = $("#formUpdate").serializeArray();
-	            console.log(data);
-	            $.ajax({
-	                url: '/configHorarioGrupo/updateHorarioGrupo',
-	                type: 'post',
-	                dataType: 'json',
-	                data: data,
-	                success: function (data) {
-	                }
-	            })
-	            .done(function(data) {
+	            	event.preventDefault();
+	            	var data = $("#formUpdate").serializeArray();         	
+	            	$.ajax({
+	                	url: '/configHorarioGrupo/updateHorarioGrupo',
+	                	type: 'post',
+	                	dataType: 'json',
+	                	data: data,
+	                	success: function (data) {
+	                	}
+	            	})
+	            	.done(function(data) {
 	                console.log(data)
 		                if (data.err=="existe"){
 		                	$('#selectDiaHorarioGrupo').closest('.form-inline').removeClass('has-success').addClass('has-error');

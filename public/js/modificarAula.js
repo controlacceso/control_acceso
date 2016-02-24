@@ -1,26 +1,24 @@
 $(document).ready(function() {
-	    controlFooter();
-	    $('img').attr("src",'/images/sshot-1.png');
-	//reglas
+controlFooter();
+$('img').attr("src",'/images/sshot-1.png');
+
 	var reglas = {
 		numero:{required:true,max: 250},
         piso:{required:true,max: 3},
 		capacidad:{required:true,max: 30},
 	};
-	//mensajes
+
 	var mensajes = {
 		numero:{required:"",max:""},
         piso:{required:"",max:""},
 		capacidad:{required:"",max:""},
 	};
 
-	//Buscar alumnos al escribir
 	$('#numerobusquedaAula').keyup(function(event) {
 		$("#footer").css("bottom","auto");
 		buscarAulas();
 	});
 
-	//Buscar alumnos al clicar Buscar
 	$('#form').submit(function(event) {
 		event.preventDefault();
 		$("#footer").css("bottom","auto");
@@ -34,40 +32,40 @@ $(document).ready(function() {
 		.done(function(result) {
 			$("#footer").css("bottom","auto");
     		var formulario = "<form class='form-group' action='/updateAula' id='formUpdate' name='formUpdate' method='post'>";
-    		formulario += "<div class='form-inline' >";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='id_aula' id='labelIdAula' class='input-group-addon'>ID AULA</label>";
-    		formulario += "<input type='text' id='IdAula' name='id_aula' class='form-control' value='"+result[0].id_aula+"'readonly>";
-    		formulario += "<span id='IdAula1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-  			formulario += "<div class='form-inline' id='alertNumero'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='numero'  id='labelNumeroAula' class='input-group-addon'>NUMERO</label>";
-    		formulario += "<input type='number' id='numeroAula' name='numero' min='1' class='form-control has-feedback' value='"+result[0].numero+"'>";
-    		formulario += "<span id='numeroAula1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";    		
-    		formulario += "<div id='mensaje' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp'> Numero ya existente</span></div>";	
-  			formulario += "<div class='form-inline' id='alertPiso'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='piso' id='labelPisoAula' class='input-group-addon'>PISO</label>";    		
-    		formulario += "<input type='number' id='pisoAula' name='piso' min='0' class='form-control has-feedback' value='"+result[0].piso+"'>";
-    		formulario += "<span id='pisoAula1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div><br/>";
-  			formulario += "<div class='form-inline' id='alertCapacidad'>";
-    		formulario += "<div class='input-group'>";
-			formulario += "<label for='capacidad' id='labelCapacidadAula' class='input-group-addon'>CAPACIDAD</label>";         		
-       		formulario += "<input type='number' id='capacidadAula' name='capacidad' min='1' class='form-control has-feedback' value='"+result[0].capacidad+"'>";
-    		formulario += "<span id='capacidadAula1' class='glyphicon form-control-feedback'></span>";
-    		formulario += "</div>";
-  			formulario += "</div>";			
-			formulario += "</br><input type='submit' name='btnModificar' id='btnModificar' class='btn btn-warning' value='Modificar'>";
-    		formulario += "&nbsp;<button id='btnBorrar' class='btn btn-danger'>Borrar</button>";
-    		formulario += "&nbsp;<a id='enlace2' href='/config' class='btn btn-primary'>Volver</a>";
-    		formulario += "<div id='mensaje2' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp2'> Clave ya existente</span></div>";
-    		formulario += "</form>";
+    			formulario += "<div class='form-inline' >";
+    			formulario += "<div class='input-group'>";
+				formulario += "<label for='id_aula' id='labelIdAula' class='input-group-addon'>ID AULA</label>";
+	    		formulario += "<input type='text' id='IdAula' name='id_aula' class='form-control' value='"+result[0].id_aula+"'readonly>";
+	    		formulario += "<span id='IdAula1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	  			formulario += "<div class='form-inline' id='alertNumero'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='numero'  id='labelNumeroAula' class='input-group-addon'>NUMERO</label>";
+	    		formulario += "<input type='number' id='numeroAula' name='numero' min='1' class='form-control has-feedback' value='"+result[0].numero+"'>";
+	    		formulario += "<span id='numeroAula1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";    		
+	    		formulario += "<div id='mensaje' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp'> Numero ya existente</span></div>";	
+	  			formulario += "<div class='form-inline' id='alertPiso'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='piso' id='labelPisoAula' class='input-group-addon'>PISO</label>";    		
+	    		formulario += "<input type='number' id='pisoAula' name='piso' min='0' class='form-control has-feedback' value='"+result[0].piso+"'>";
+	    		formulario += "<span id='pisoAula1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div><br/>";
+	  			formulario += "<div class='form-inline' id='alertCapacidad'>";
+	    		formulario += "<div class='input-group'>";
+				formulario += "<label for='capacidad' id='labelCapacidadAula' class='input-group-addon'>CAPACIDAD</label>";         		
+	       		formulario += "<input type='number' id='capacidadAula' name='capacidad' min='1' class='form-control has-feedback' value='"+result[0].capacidad+"'>";
+	    		formulario += "<span id='capacidadAula1' class='glyphicon form-control-feedback'></span>";
+	    		formulario += "</div>";
+	  			formulario += "</div>";			
+				formulario += "</br><input type='submit' name='btnModificar' id='btnModificar' class='btn btn-warning' value='Modificar'>";
+	    		formulario += "&nbsp;<button id='btnBorrar' class='btn btn-danger'>Borrar</button>";
+	    		formulario += "&nbsp;<a id='enlace2' href='/config' class='btn btn-primary'>Volver</a>";
+	    		formulario += "<div id='mensaje2' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp2'> Clave ya existente</span></div>";
+	    		formulario += "</form>";
     		$('#resultado').html(formulario);
 		})
 		.fail(function() {
@@ -80,14 +78,14 @@ $(document).ready(function() {
 	        rules:reglas,
 			messages:mensajes,
 	        highlight: function(element) {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+	            $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
 	        },
 	        unhighlight: function(element) {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
-	                $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');        
+	            var id_attr = "#" + $( element ).attr("id") + "1";
+	            $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
+	            $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');        
 	        },
 			errorPlacement: function(error,element){
 				console.log(error.attr("id"));
@@ -114,29 +112,22 @@ $(document).ready(function() {
 	            .done(function(data) {
 	                console.log(data)
 		                if (data.err=="existe"){
-		                showAlert($('#resultado #alertNumero'),"error"," Aula ya existente ");
+		                	showAlert($('#resultado #alertNumero'),"error"," Aula ya existente ");
 		                }else if (data.dato=="ok"){
-		                $('#IdAula').closest('.form-inline').removeClass('has-error').addClass('has-success');
-			            $('#IdAula1').removeClass('glyphicon-remove').addClass('glyphicon-ok');	
-		                $('#resultado #mensaje').hide();
-		                showAlertRedirect($('#resultado #enlace2'),"ok","Aula modificada correctamente",'/config');
+		                	$('#IdAula').closest('.form-inline').removeClass('has-error').addClass('has-success');
+			            	$('#IdAula1').removeClass('glyphicon-remove').addClass('glyphicon-ok');	
+		                	$('#resultado #mensaje').hide();
+		                	showAlertRedirect($('#resultado #enlace2'),"ok","Aula modificada correctamente",'/config');
 		                }
 		                console.log("success");
 			            })
 			            .fail(function() {
 	                console.log("error");
 	            })
-	            /*
-	            *   Form Submit Fin
-	            */
 	        }//submitHandler
 	    });//Validate
 	  //$( "#target" ).submit();
 	});
-
-	
-
-
 
 	//Funcion con ajax para recoger datos alumnos y crear tabla
 	function buscarAulas () {
