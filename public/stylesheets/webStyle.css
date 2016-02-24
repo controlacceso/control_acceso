@@ -19,15 +19,24 @@ ul{
 .page-header{
   margin-top: 10px;
 }
-
 p{
   font-size: 30px;
-  text-align: left;
+  text-align: center;
 }
-
 #fotoSeccion{
   width: 70%;
   height: 60%;
+}
+@media (max-width: 800px){
+  section{
+    height: auto;
+  }
+}
+@media (max-width: 800px){
+  .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
+    height: 700px;
+  }
+
 }
 /*****FIN General*****/
 
@@ -193,6 +202,7 @@ ul{
 }
 #copy{
   margin-bottom: 10%;
+  font-size: 18pt;
 }
 /*****FIN Footer*****/
 /*****Carousel*******/
@@ -220,8 +230,8 @@ ul{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 ); /* IE6-9 */
   color:white;
 }
-#headerQueEs{
-
+.negro{
+  color:black;
 }
 /******FIN Que es*****/
 /******Como funciona******/
@@ -233,6 +243,10 @@ ul{
   background: linear-gradient(to bottom,  #ffb76b 0%,#ffa73d 19%,#ff8411 31%,#ff8419 31%,#ff8d0c 42%,#ff8d0c 42%,#ff9a3d 57%,#ffa24c 72%,#ff8d0c 79%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 */
   color:black;
+}
+#queEs p{
+  text-align: left;
+  margin-top: 50px;
 }
 /******FIN como funciona******/
 /******Demo*******/
@@ -269,7 +283,7 @@ ul{
 }
 #fotoQuienesSomos{
   padding-top: 10%;
-  width: 30%;
+  /*width: 30%;*/
   height: 40%;
   margin: auto;
   border-radius: 40px;
