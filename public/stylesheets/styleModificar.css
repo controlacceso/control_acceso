@@ -5063,18 +5063,23 @@ h1{
 }
 #dniAlumno1,#nombreAlumno1,#apellidosAlumno1,#correoAlumno1,#fotoAlumno1,
 #num_tarjetaAlumno1,#nombreAsignatura1,#claveAsignatura1,#selectTipoAsignatura1,
-#radioAsignatura11,#pisoAula1,#numeroAula1,#nombreGrupo1,#capacidadAula1,#labelDniProfesor1,
+#pisoAula1,#numeroAula1,#nombreGrupo1,#capacidadAula1,#labelDniProfesor1,
 #selectTipoGrupo1,#selectDiaHorarioGrupo1,#hora_inicioHorarioGrupo1,#hora_finalHorarioGrupo1,
 #selectHorarioGrupoGrupo1,#selectHorarioGrupoAsignatura1,#selectHorarioGrupoAula1,
 #id_horario_grupo1,#selectProfesorHorarioProfesor1,#hora_inicioHorarioProfesor1,
 #hora_finalHorarioProfesor1,#selectDiaHorarioProfesor1,#dniProfesor1,#nombreProfesor1,
 #apellidosProfesor1,#correoProfesor1,#passwordProfesor1,#fotoProfesor1,#num_tarjetaProfesor1,
 #Id_asignatura1,#IdGrupo1,#IdAula1,#Id_horario_grupo1,#Id_horario_profesor1,#diaHorarioProfesor1,
-#selectProfesorHorarioProfesorM1,#id_faltasFalta1,#id_horario_grupoFalta1,#selectAlumnoFaltasM1,#diaFalta1,#hora_inicioFalta1,#hora_finalFalta1,#tarjetaAlumno11,#Id_alumno1,#tarjetaProfesor11,#Id_profesor1,#adminProfesor11,#observacionesFalta1{
+#selectProfesorHorarioProfesorM1,#id_faltasFalta1,#id_horario_grupoFalta1,#selectAlumnoFaltasM1,#diaFalta1,#hora_inicioFalta1,#hora_finalFalta1,#Id_alumno1,#Id_profesor1,#observacionesFalta1{
   position: absolute;
   left: 445px !important;
   font-size: 15px;
   
+}
+#radioAsignatura11,#tarjetaAlumno11,#adminProfesor11,#tarjetaProfesor11{
+  position: absolute;
+  left: 395px !important;
+  font-size: 15px;
 }
 #labelApellidosAlumno,#labelNum_tarjAlumno,
 #labelCapacidadAula,#labelHorarioGrupoAsignatura,#labelApellidosProfesor,
@@ -5344,18 +5349,22 @@ h1{
 }
 #dniAlumno1,#nombreAlumno1,#apellidosAlumno1,#correoAlumno1,#fotoAlumno1,
 #num_tarjetaAlumno1,#nombreAsignatura1,#claveAsignatura1,#selectTipoAsignatura1,
-#radioAsignatura11,#pisoAula1,#numeroAula1,#nombreGrupo1,#capacidadAula1,#labelDniProfesor1,
+#pisoAula1,#numeroAula1,#nombreGrupo1,#capacidadAula1,#labelDniProfesor1,
 #selectTipoGrupo1,#selectDiaHorarioGrupo1,#hora_inicioHorarioGrupo1,#hora_finalHorarioGrupo1,
 #selectHorarioGrupoGrupo1,#selectHorarioGrupoAsignatura1,#selectHorarioGrupoAula1,
 #id_horario_grupo1,#selectProfesorHorarioProfesor1,#hora_inicioHorarioProfesor1,
 #hora_finalHorarioProfesor1,#selectDiaHorarioProfesor1,#dniProfesor1,#nombreProfesor1,
 #apellidosProfesor1,#correoProfesor1,#passwordProfesor1,#fotoProfesor1,#num_tarjetaProfesor1,
 #Id_asignatura1,#IdGrupo1,#IdAula1,#Id_horario_grupo1,#Id_horario_profesor1,#diaHorarioProfesor1,
-#selectProfesorHorarioProfesorM1,#id_faltasFalta1,#id_horario_grupoFalta1,#selectAlumnoFaltasM1,#diaFalta1,#hora_inicioFalta1,#hora_finalFalta1,#tarjetaAlumno11,#Id_alumno1,#tarjetaProfesor11,#Id_profesor1,#adminProfesor11,#observacionesFalta1{
+#selectProfesorHorarioProfesorM1,#id_faltasFalta1,#id_horario_grupoFalta1,#selectAlumnoFaltasM1,#diaFalta1,#hora_inicioFalta1,#hora_finalFalta1,#Id_alumno1,#Id_profesor1,#observacionesFalta1{
   position: absolute;
   left: 445px !important;
   font-size: 15px;
-  
+}
+#radioAsignatura11,#tarjetaAlumno11,#adminProfesor11,#tarjetaProfesor11{
+  position: absolute;
+  left: 415px !important;
+  font-size: 15px;
 }
 #labelApellidosAlumno,#labelNum_tarjAlumno,
 #labelCapacidadAula,#labelHorarioGrupoAsignatura,#labelApellidosProfesor,
@@ -5626,18 +5635,23 @@ h1{
 }
 #dniAlumno1,#nombreAlumno1,#apellidosAlumno1,#correoAlumno1,#fotoAlumno1,
 #num_tarjetaAlumno1,#nombreAsignatura1,#claveAsignatura1,#selectTipoAsignatura1,
-#radioAsignatura11,#pisoAula1,#numeroAula1,#nombreGrupo1,#capacidadAula1,#labelDniProfesor1,
+#pisoAula1,#numeroAula1,#nombreGrupo1,#capacidadAula1,#labelDniProfesor1,
 #selectTipoGrupo1,#selectDiaHorarioGrupo1,#hora_inicioHorarioGrupo1,#hora_finalHorarioGrupo1,
 #selectHorarioGrupoGrupo1,#selectHorarioGrupoAsignatura1,#selectHorarioGrupoAula1,
 #id_horario_grupo1,#selectProfesorHorarioProfesor1,#hora_inicioHorarioProfesor1,
 #hora_finalHorarioProfesor1,#selectDiaHorarioProfesor1,#dniProfesor1,#nombreProfesor1,
 #apellidosProfesor1,#correoProfesor1,#passwordProfesor1,#fotoProfesor1,#num_tarjetaProfesor1,
 #Id_asignatura1,#IdGrupo1,#IdAula1,#Id_horario_grupo1,#Id_horario_profesor1,#diaHorarioProfesor1,
-#selectProfesorHorarioProfesorM1,#id_faltasFalta1,#id_horario_grupoFalta1,#selectAlumnoFaltasM1,#diaFalta1,#hora_inicioFalta1,#hora_finalFalta1,#tarjetaAlumno11,#Id_alumno1,#tarjetaProfesor11,#Id_profesor1,#adminProfesor11,#observacionesFalta1{
+#selectProfesorHorarioProfesorM1,#id_faltasFalta1,#id_horario_grupoFalta1,#selectAlumnoFaltasM1,#diaFalta1,#hora_inicioFalta1,#hora_finalFalta1,#Id_alumno1,#Id_profesor1,#observacionesFalta1{
   position: absolute;
   left: 470px !important;
   font-size: 15px;
   
+}
+#radioAsignatura11,#tarjetaAlumno11,#adminProfesor11,#tarjetaProfesor11{
+  position: absolute;
+  left: 415px !important;
+  font-size: 15px;
 }
 #labelApellidosAlumno,#labelNum_tarjAlumno,
 #labelCapacidadAula,#labelHorarioGrupoAsignatura,#labelApellidosProfesor,
