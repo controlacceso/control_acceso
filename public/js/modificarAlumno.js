@@ -106,9 +106,9 @@ $('img').attr("src",'/images/sshot-1.png');
 				} else {
 					formulario += "<div class='form-inline'>";
     				formulario += "<div class='input-group'>";
-				    formulario += "<label id='labelTarjeta_activadaAlumno' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
-				    formulario += "<label id='labeltarjeta1Alumno' for='tarjeta1'>SI</label>";
-				    formulario += "<input id='tarjeta1Alumno' type='radio' name='tarjeta_activada' value='1' class='radio form-control'/><br/>";
+					formulario += "<label id='labelTarjeta_activadaAlumno' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
+					formulario += "<label id='labeltarjeta1Alumno' for='tarjeta1'>SI</label>";
+				    formulario += "<input id='tarjeta1Alumno' type='radio' name='tarjeta_activada' value='1' class='radio form-control' />";
 				    formulario += "<label id='labeltarjetaAlumno' for='tarjeta'>NO  </label>";
 				    formulario += "<input id='tarjetaAlumno' type='radio' name='tarjeta_activada' value='0' class='radio form-control'checked='checked'/><span id='tarjetaAlumno11' class='glyphicon form-control-feedback'></span>";
 					formulario += "</br>";

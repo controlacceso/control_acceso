@@ -78,9 +78,9 @@ $('img').attr("src",'/images/sshot-1.png');
 	    				formulario += "<div class='input-group'>";
 					    formulario += "<label id='labelObligatoriaAsignatura' for='obligatoria' class='input-group-addon'>OBLIGATORIA</label><br/>";
 					    formulario += "<label id='labelradio1Asignatura' for='radioAsignatura1'>SI</label>";
-					    formulario += "<input id='radioAsignatura1' type='radio' name='obligatoria' value='1' class='radio form-control'/><br/>";
+					    formulario += "<input id='radioAsignatura1' type='radio' name='obligatoria' value='1' class='radio form-control' />";
 					    formulario += "<label id='labelradioAsignatura' for='radioAsignatura'>NO  </label>";
-					    formulario += "<input id='radioAsignatura' type='radio' name='obligatoria' value='0' class='radio form-control'checked='checked'/><span id='radioAsignatura11' class='glyphicon form-control-feedback'></span>";
+					    formulario += "<input id='radioAsignatura' type='radio' name='obligatoria' value='0' class='radio form-control' checked='checked'/><span id='radioAsignatura11' class='glyphicon form-control-feedback'></span>";
 						formulario += "</div>";
 	  					formulario += "</div><br/>";					
 					}
