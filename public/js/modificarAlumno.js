@@ -1,8 +1,8 @@
 $(document).ready(function() {
-	controlFooter();
-	$('img').attr("src",'/images/sshot-1.png');
+controlFooter();
+$('img').attr("src",'/images/sshot-1.png');
     jQuery.validator.addMethod("lettersonly", function(value, element) { 
-    return this.optional(element) || /^[a-zA-Z\s]*$/.test(value);
+    	return this.optional(element) || /^[a-zA-Z\s]*$/.test(value);
 	},"Please enter only letters");
 	
     jQuery.validator.addMethod("dni", function(value, element) {
@@ -11,12 +11,10 @@ $(document).ready(function() {
         }
     });
 
-    //regla correo
     jQuery.validator.addMethod("correo", function(value, element) {
         return this.optional(element) || /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i.test(value);
     });
 
-	//reglas
 	var reglas = {
 		dni:{required:true,dni:true},
         nombre:{required:true,lettersonly:true},
@@ -24,7 +22,7 @@ $(document).ready(function() {
 		correo:{required:true,correo:true},
         num_tarjeta:{required:true},
 	};
-	//mensajes
+
 	var mensajes = {
 		dni:{required:"",dni:""},
         nombre:{required:"",lettersonly:""},
@@ -33,20 +31,17 @@ $(document).ready(function() {
         num_tarjeta:{required:""},
 	};
 
-	
-	//Buscar alumnos al escribir
 	$('#nombrebusquedaAlumno').keyup(function(event) {
 		$("#footer").css("bottom","auto");
 		buscarAlumnos();
 	});
 
-	//Buscar alumnos al clicar Buscar
 	$('#form').submit(function(event) {
 		event.preventDefault();
 		$("#footer").css("bottom","auto");
 		buscarAlumnos();
 	});
-	//Crear formulario para modificar o borrar alumno al clicar en la celda
+
 	$('#resultado').on("click",".celda",function () {
 		var datos = $(this).contents();
 		buscarAlumnoPorId(datos[0].id)
@@ -98,10 +93,10 @@ $(document).ready(function() {
     		formulario += "</div>";
   			formulario += "</div><br/>";
   			   if(result[0].tarjeta_activada == 1){
-			formulario += "<div class='form-inline'>";
+					formulario += "<div class='form-inline'>";
     				formulario += "<div class='input-group'>";
-				    formulario += "<label id='labelTarjeta_activadaAlumno' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
-				    formulario += "<label id='labeltarjeta1Alumno' for='tarjeta1'>SI</label>";
+					formulario += "<label id='labelTarjeta_activadaAlumno' for='tarjeta_activada' class='input-group-addon'>TARJETA ACTIVADA</label><br/>";
+					formulario += "<label id='labeltarjeta1Alumno' for='tarjeta1'>SI</label>";
 				    formulario += "<input id='tarjeta1Alumno' type='radio' name='tarjeta_activada' value='1' class='radio form-control' checked='checked'/>";
 				    formulario += "<label id='labeltarjetaAlumno' for='tarjeta'>NO  </label>";
 				    formulario += "<input id='tarjetaAlumno' type='radio' name='tarjeta_activada' value='0' class='radio form-control'/><span id='tarjetaAlumno11' class='glyphicon form-control-feedback'></span>";
@@ -145,168 +140,156 @@ $(document).ready(function() {
     		formulario += "<div id='mensaje2' style='display: none' class='alert alert-error fade in'><a href='#' data-dismiss='alert' class='close'>×</a><strong>Comprueba!</strong><span id='sp2'> Clave ya existente</span></div>";
     		formulario += "</form>";
     		$('#resultado').html(formulario);
-		})
-		.fail(function() {
+		}).fail(function() {
     		console.log("error crear formulario");
 		});
 	});//Formulario modificar y borrar
 
-$('#resultado').on("click","#btnModificar",function () {
+	$('#resultado').on("click","#btnModificar",function () {
 		$("#formUpdate").validate({
-	        rules:reglas,
-	        messages:mensajes,
-	        highlight: function(element) {
-	        if (element.type == "radio"){
-	            if ($("input[name=tarjeta_activada]:checked").val() == 1){
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $("#tarjetaAlumno11").removeClass('glyphicon-ok').addClass('glyphicon-remove');
-	            } else {
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $("#tarjetaAlumno11").removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
-	            }
-	        } else {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
-	                $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
-	        }
-	      
-	        },
-	        unhighlight: function(element) {
-	            if (element.type == "radio"){
-	                if ($("input[name=tarjeta_activada]:checked").val() == 1){
-	                    $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
-	                    $("#tarjetaAlumno11").removeClass('glyphicon-remove').addClass('glyphicon-ok'); 
-	                } else {
-	                    $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
-	                    $("#tarjetaAlumno11").removeClass('glyphicon-remove').addClass('glyphicon-ok'); 
-	                }
-	            } else {
-	                var id_attr = "#" + $( element ).attr("id") + "1";
-	                $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
-	                $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');  
-	            }         
-	        },
-	        errorPlacement: function(error,element){
-	            console.log(error.attr("id"));
-	            if (error.attr("id") == "dniAlumno-error"){
-	                 showAlertValidate("#alertDni"," Introduce un dni correcto");
-	            } else if (error.attr("id") == "nombreAlumno-error"){
-	                showAlertValidate("#alertNombre"," Solo Letras por favor");
-	            }else if (error.attr("id") == "apellidosAlumno-error"){
-	                showAlertValidate("#alertApellidos"," Solo Letras por favor");
-	            } else if (error.attr("id") == "correoAlumno-error"){
-	                showAlertValidate("#alertCorreo"," Introduce un correo correcto");
-	            } else if (error.attr("id") == "fotoAlumno-error"){
-	                showAlertValidate("#alertFoto"," Tamaño de la foto maximo 100Kb");
-	            }
-	            
-	        },
-	        submitHandler: function (form) {
-	        	console.log($('#resultado #gruposdelAlumno :checkbox').length);
-	        	if ($('#resultado #fotoAlumno').val() == ''){
-	        		event.preventDefault();
-	            	var data = $("#formUpdate").serializeArray();
-			            $.ajax({
-			                url: '/configAlumno/modificarAlumnoSinFoto',
-			                type: 'post',
-			                dataType: 'json',
-			                data: data,
-			                success: function (data) {
-			                }
-			            })
-			            .done(function(data) {
-			                console.log(data)
-				                if (data.err=="existeDNI"){
-			                    $('#dniAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-			                    $('#dniAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove'); 				                
-				                showAlert($('#resultado #alertDni'),"error"," DNI ya existente");
-				                } else if (data.err=="existeCorreo"){
-			                    $('#correoAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-			                    $('#correoAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');				                
-				                showAlert($('#resultado #alertCorreo'),"error"," Correo ya existente");
-				                } else if (data.err=="existeTarjeta"){
-			                    $('#num_tarjetaAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-			                    $('#num_tarjetaAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');				                
-				                showAlert($('#resultado #alertNum_tarj'),"error"," Tarjeta ya existente");
-				                } else if (data.err=="nogrupo"){
-				                showAlertValidate("#enlace2"," Selecciona un grupo para el alumno");	
-				                }else if (data.dato=="ok"){
-				                $('#Id_alumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
-				                $('#Id_alumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');					                
-				        		$('#fotoAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
-				        		$('#fotoAlumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');				               
-				                $('#tarjetaAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
-				                $('#tarjetaAlumno11').removeClass('glyphicon-remove').addClass('glyphicon-ok');				                
-				                $('#resultado #mensaje').hide();
-				                showAlertRedirect($('#resultado #enlace2'),"ok"," Alumno modificado correctamente",'/config');
-				                }
-				                console.log("success");
-					            })
-					            .fail(function() {
-			                console.log("error");
-			            })
-	        	} else {
-	        		var attach_id = $('#resultado #fotoAlumno').attr("id");
-					var size = $('#'+attach_id)[0].files[0].size;
-					   if (size > 102400)// checks the file more than 100 Kb
-			           {
-				           $('#fotoAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-				           $('#fotoAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');			           	
-			               showAlertValidate("#alertFoto"," Tamaño de la foto maximo 100Kb");
-			           } else {      
-			           
-	            	event.preventDefault();
-	            	var formData = new FormData($('#resultado #formUpdate')[0]);
-	            $.ajax({
-	                url: '/configAlumno/modificarAlumno',
-	                type: 'post',
-	                data: formData,
-	                async: false,
-	                cache: false,
-	                contentType: false,
-	                processData: false,
-	                success: function (data) {
-	                }
-	            })
-	            .done(function(data) {
-	                console.log(data)
-		                if (data.err=="existeDNI"){
-			            $('#dniAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-			            $('#dniAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove'); 		                
-		                showAlert($('#resultado #alertDni'),"error","dni ya existente");
-		                } else if (data.err=="existeCorreo"){
-			            $('#correoAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-			            $('#correoAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');			                
-		                showAlert($('#resultado #alertCorreo'),"error","Correo ya existente");
-		                } else if (data.err=="existeTarjeta"){
-			            $('#num_tarjetaAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
-			            $('#num_tarjetaAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');		                
-		                showAlert($('#resultado #alertNum_tarj'),"error","Tarjeta ya existente");
-				        } else if (data.err=="nogrupo"){
-				         showAlertValidate("#enlace2"," Selecciona un grupo para el alumno");	
-				        }else if (data.dato=="ok"){
-				        $('#Id_alumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
-				        $('#Id_alumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');		                
-				        $('#fotoAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
-				        $('#fotoAlumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');				        
-				        $('#tarjetaAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
-				        $('#tarjetaAlumno11').removeClass('glyphicon-remove').addClass('glyphicon-ok');		                
-		                $('#resultado #mensaje').hide();
-		                showAlertRedirect($('#resultado #enlace2'),"ok","Alumno modificado correctamente",'/config');
+			rules:reglas,
+		    messages:mensajes,
+		    highlight: function(element) {
+		        if (element.type == "radio"){
+		            if ($("input[name=tarjeta_activada]:checked").val() == 1){
+		                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+		                $("#tarjetaAlumno11").removeClass('glyphicon-ok').addClass('glyphicon-remove');
+		            } else {
+		                $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+		                $("#tarjetaAlumno11").removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
+		            }
+		        } else {
+		            var id_attr = "#" + $( element ).attr("id") + "1";
+		            $(element).closest('.form-inline').removeClass('has-success').addClass('has-error');
+		            $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove'); 
+		        }
+		        },
+		        unhighlight: function(element) {
+		            if (element.type == "radio"){
+		                if ($("input[name=tarjeta_activada]:checked").val() == 1){
+		                    $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
+		                    $("#tarjetaAlumno11").removeClass('glyphicon-remove').addClass('glyphicon-ok'); 
+		                } else {
+		                    $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
+		                    $("#tarjetaAlumno11").removeClass('glyphicon-remove').addClass('glyphicon-ok'); 
 		                }
-		                console.log("success");
-			            })
-			            .fail(function() {
-	                console.log("error");
-	            })
-	            /*
-	            *   Form Submit Fin
-	            */
-	            }//.else if (size > 102400)
-	        	}//.else	        
-	        }//submitHandler
+		            } else {
+		                var id_attr = "#" + $( element ).attr("id") + "1";
+		                $(element).closest('.form-inline').removeClass('has-error').addClass('has-success');
+		                $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');  
+		            }         
+		        },
+		        errorPlacement: function(error,element){
+		        	console.log(error.attr("id"));
+		            if (error.attr("id") == "dniAlumno-error"){
+		                showAlertValidate("#alertDni"," Introduce un dni correcto");
+		            } else if (error.attr("id") == "nombreAlumno-error"){
+		                showAlertValidate("#alertNombre"," Solo Letras por favor");
+		            }else if (error.attr("id") == "apellidosAlumno-error"){
+		                showAlertValidate("#alertApellidos"," Solo Letras por favor");
+		            } else if (error.attr("id") == "correoAlumno-error"){
+		                showAlertValidate("#alertCorreo"," Introduce un correo correcto");
+		            } else if (error.attr("id") == "fotoAlumno-error"){
+		                showAlertValidate("#alertFoto"," Tamaño de la foto maximo 100Kb");
+		            }      
+		        },
+		        submitHandler: function (form) {
+		        	console.log($('#resultado #gruposdelAlumno :checkbox').length);
+		        	if ($('#resultado #fotoAlumno').val() == ''){
+		        		event.preventDefault();
+		            	var data = $("#formUpdate").serializeArray();
+				            $.ajax({
+				                url: '/configAlumno/modificarAlumnoSinFoto',
+				                type: 'post',
+				                dataType: 'json',
+				                data: data,
+				                success: function (data) {
+				                }
+				            })
+				            .done(function(data) {
+				                console.log(data)
+					            if (data.err=="existeDNI"){
+				                	$('#dniAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+				                    $('#dniAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove'); 				                
+					                showAlert($('#resultado #alertDni'),"error"," DNI ya existente");
+					            } else if (data.err=="existeCorreo"){
+				                    $('#correoAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+				                    $('#correoAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');				                
+					                showAlert($('#resultado #alertCorreo'),"error"," Correo ya existente");
+					            } else if (data.err=="existeTarjeta"){
+				                    $('#num_tarjetaAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+				                    $('#num_tarjetaAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');				                
+					                showAlert($('#resultado #alertNum_tarj'),"error"," Tarjeta ya existente");
+					            } else if (data.err=="nogrupo"){
+					                showAlertValidate("#enlace2"," Selecciona un grupo para el alumno");	
+					            }else if (data.dato=="ok"){
+					                $('#Id_alumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
+					                $('#Id_alumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');					                
+					        		$('#fotoAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
+					        		$('#fotoAlumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');				               
+					                $('#tarjetaAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
+					                $('#tarjetaAlumno11').removeClass('glyphicon-remove').addClass('glyphicon-ok');				                
+					                $('#resultado #mensaje').hide();
+					                showAlertRedirect($('#resultado #enlace2'),"ok"," Alumno modificado correctamente",'/config');
+					            }
+					            console.log("success");
+						        }).fail(function() {
+				                console.log("error");
+				            })
+		        	} else {
+		        		var attach_id = $('#resultado #fotoAlumno').attr("id");
+						var size = $('#'+attach_id)[0].files[0].size;
+						if (size > 102400){
+					        $('#fotoAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+					        $('#fotoAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');			           	
+				            showAlertValidate("#alertFoto"," Tamaño de la foto maximo 100Kb");
+				        } else {      
+		            		event.preventDefault();
+		            		var formData = new FormData($('#resultado #formUpdate')[0]);
+		            		$.ajax({
+		                		url: '/configAlumno/modificarAlumno',
+		                		type: 'post',
+		                		data: formData,
+		                		async: false,
+		                		cache: false,
+		                		contentType: false,
+		                		processData: false,
+		                		success: function (data) {
+		                		}
+		            		}).done(function(data) {
+		                	console.log(data)
+			                	if (data.err=="existeDNI"){
+				            		$('#dniAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+				           			$('#dniAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove'); 		                
+			                		showAlert($('#resultado #alertDni'),"error","dni ya existente");
+			                	} else if (data.err=="existeCorreo"){
+				            		$('#correoAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+				            		$('#correoAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');			                
+			                		showAlert($('#resultado #alertCorreo'),"error","Correo ya existente");
+			                	} else if (data.err=="existeTarjeta"){
+				            		$('#num_tarjetaAlumno').closest('.form-inline').removeClass('has-success').addClass('has-error');
+				            		$('#num_tarjetaAlumno1').removeClass('glyphicon-ok').addClass('glyphicon-remove');		                
+			                		showAlert($('#resultado #alertNum_tarj'),"error","Tarjeta ya existente");
+					        	} else if (data.err=="nogrupo"){
+					        		showAlertValidate("#enlace2"," Selecciona un grupo para el alumno");	
+					        	}else if (data.dato=="ok"){
+					        		$('#Id_alumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
+					        		$('#Id_alumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');		                
+					        		$('#fotoAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
+					        		$('#fotoAlumno1').removeClass('glyphicon-remove').addClass('glyphicon-ok');				        
+					        		$('#tarjetaAlumno').closest('.form-inline').removeClass('has-error').addClass('has-success');
+					        		$('#tarjetaAlumno11').removeClass('glyphicon-remove').addClass('glyphicon-ok');		                
+			                		$('#resultado #mensaje').hide();
+			                		showAlertRedirect($('#resultado #enlace2'),"ok","Alumno modificado correctamente",'/config');
+			                	}
+			                	console.log("success");
+				            }).fail(function() {
+		                	console.log("error");
+		            		})
+		            	}//.else if (size > 102400)
+		        	}//.else	        
+		        }//submitHandler
 	    });//Validate
-	  //$( "#target" ).submit();
 	});
 
 	
@@ -369,8 +352,8 @@ $('#resultado').on("click","#btnModificar",function () {
 			})//ajax
 			.done(function(data) {
 				if (data[9]=="o"){
-				$('#resultado #mensaje').hide();
-				showAlertRedirect("#enlace2","ok"," Alumno borrado correctamente",'/config');
+					$('#resultado #mensaje').hide();
+					showAlertRedirect("#enlace2","ok"," Alumno borrado correctamente",'/config');
 				}
 				console.log("success borrar");
 			})//done
@@ -384,20 +367,20 @@ $('#resultado').on("click","#btnModificar",function () {
 	$('#resultado').on("change","#gruposdelAlumno" || "#gruposTodos",function () {
 		$(":checkbox").click(function(){
 	    	var arrayId_grupo=[];
-	    $('#gruposdelAlumno  :checkbox').each(function(){
-	    	if($(this).prop('checked')){
-	    		arrayId_grupo.push($(this).attr('value'));
-	    	} })
-	   	$('#gruposTodos  :checkbox').each(function(){
-	    	if($(this).prop('checked')){
-	    		arrayId_grupo.push($(this).attr('value'));
-	    	} })
-	   	console.log(arrayId_grupo.length);
-	   	if (arrayId_grupo.length == 0){
-	   		$('#AsignaturaGrupoRestante').html('');
-			$('#AsignaturaGrupo').html('');
-	   	} else {
-					$.ajax({
+		    $('#gruposdelAlumno  :checkbox').each(function(){
+		    	if($(this).prop('checked')){
+		    		arrayId_grupo.push($(this).attr('value'));
+		    	} })
+		   	$('#gruposTodos  :checkbox').each(function(){
+		    	if($(this).prop('checked')){
+		    		arrayId_grupo.push($(this).attr('value'));
+		    	} })
+		   	console.log(arrayId_grupo.length);
+		   	if (arrayId_grupo.length == 0){
+		   		$('#AsignaturaGrupoRestante').html('');
+				$('#AsignaturaGrupo').html('');
+		   	} else {
+				$.ajax({
 					url: '/configGrupo/buscarAsignaturasDelosGrupos',
 					type: 'post',
 					dataType: 'json',
@@ -407,10 +390,10 @@ $('#resultado').on("click","#btnModificar",function () {
 						$('#AsignaturaGrupo').html('');
 						var resp = "";
 						resp += "<div class='form-inline'>";
-    					resp += "<div class='input-group'>";
+	    				resp += "<div class='input-group'>";
 						resp += "<label for='asignaturas' class='input-group-addon'>ASIGNATURAS</label>";
 						resp += "</div>";
-  						resp += "</div><br/>";
+	  					resp += "</div><br/>";
 						resp += "<table id='asignaturas'>";
 						for (var i = 0; i < data.length; i++) {
 							resp += "<tr class='asignaturas'>";
@@ -430,10 +413,9 @@ $('#resultado').on("click","#btnModificar",function () {
 				.fail(function() {
 					console.log("error");
 				})//fail
-				/**/
 			}//.else
-			});//$(":checkbox").click(function()
-	});
+		});//$(":checkbox").click(function()
+	});//.$('#resultado').on("change","#gruposdelAlumno" || "#gruposTodos",function () {
 
 	//funcion para buscar todos los grupos
 	function buscarGruposDelAlumno (id) {
@@ -470,7 +452,7 @@ $('#resultado').on("click","#btnModificar",function () {
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarTodosLosGrupos
+	}//function buscarGruposDelAlumno
 
 		//funcion para buscar todos los grupos
 	function buscarTodosLosGrupos (id) {
@@ -540,7 +522,7 @@ $('#resultado').on("click","#btnModificar",function () {
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarTodosLosGrupos
+	}//function buscarAsignaturasConvalidadasDelAlumno
 
 		function buscarAsignaturasNoConvalidadasDelAlumno (id) {
 		return	$.ajax({
@@ -572,15 +554,15 @@ $('#resultado').on("click","#btnModificar",function () {
 	}//function buscarTodosLosGrupos
 
 		$('#resultado').on("change","#AsignaturaGrupo" || "#AsignaturaGrupoRestante" || "#gruposdelAlumno"  || "#gruposTodos" ,function () {
-		$(":checkbox").click(function(){
-	        var id = $(this).attr('id'); 
-		if ($(this).attr("checked",true)) {
-			$(this).attr("checked",false);
-		} else {
-			$(this).attr("checked",true)
-		}
-		});//$(":checkbox").click(function()
-	});
+			$(":checkbox").click(function(){
+		        var id = $(this).attr('id'); 
+			if ($(this).attr("checked",true)) {
+				$(this).attr("checked",false);
+			} else {
+				$(this).attr("checked",true)
+			}
+			});//$(":checkbox").click(function()
+		});
 
 		$('#resultado').on("click","#btnMostrarGrupos",function(event) {
 			if ($('#resultado #btnMostrarGrupos').html() == "Mostrar Los Grupos"){
@@ -590,66 +572,61 @@ $('#resultado').on("click","#btnModificar",function () {
 				$('#resultado #gruposTodos').hide();
 		 		$('#resultado #btnMostrarGrupos').html("Mostrar Los Grupos");				
 			}
-		 
-
 		});//click borrar formulario alumno
 
 
 
 
 });//ready
-function showAlertValidate(lugar,texto) {
-    $('#mensaje').attr('class','alert alert-warning fade in');
-    $('#mensaje span').html(texto);
-    $('#mensaje').insertAfter(lugar);
-    $('#mensaje').show(1000, function(){
-                });
+
+    function controlFooter(){ 
+        /*el alto que tiene el navegador*/
+        $alto_navegador= $(window).height();
+        /*el alto que tiene el contenido de la pagina*/
+        $alto_documento= $(document).height(); 
+        /*  aqui condicionamos si el alto del contenido 
+          *  es mayor que
+          *  el alto del navegador*/
+        if ($alto_documento>$alto_navegador){
+             $("#footer").css({"bottom":"auto"})
+        }else if($alto_documento>=$alto_navegador){
+             $("#footer").css({"bottom":"0px"})
+        } 
+     }//controlFooter
+
+    function showAlertValidate(lugar,texto) {
+        $('#mensaje').attr('class','alert alert-warning fade in');
+        $('#mensaje span').html(texto);
+        $('#mensaje').insertAfter(lugar);
+        $('#mensaje').show(1000, function(){        
+        });
     }
 
-
-function showAlert(lugar,tipo,texto) {
-
-    if (tipo=="error"){
+    function showAlert(lugar,tipo,texto) {
+       if (tipo=="error"){
         $('#mensaje').attr('class','alert alert-danger fade in');
-    }else {
+       } else {
         $('#mensaje').attr('class','alert alert-success fade in');
+       }
+       $('#mensaje span').html(texto);
+       $('#mensaje').insertAfter(lugar);
+       $('#mensaje').show(1000, function(){
+
+       });
     }
-    $('#mensaje span').html(texto);
-    $('#mensaje').insertAfter(lugar);
-    $('#mensaje').show(1000, function(){
-                });
 
-    }
-
-function showAlertRedirect(lugar,tipo,texto,url) {
-
-    if (tipo=="error"){
-        $('#mensaje2').attr('class','alert alert-danger fade in');
-    }else {
+    function showAlertRedirect(lugar,tipo,texto,url) {
+       if (tipo=="error"){
+         $('#mensaje2').attr('class','alert alert-danger fade in');
+       } else {
         $('#mensaje2 strong').html(' ');
         $('#mensaje2').attr('class','alert alert-success fade in');
+       }
+       $('#mensaje2 span').html(texto);
+       $('#mensaje2').insertAfter(lugar);
+       $('#mensaje2').slideToggle("slow", function(){
+        window.setTimeout(function() {
+         window.location.replace(url);   
+        }, 4000);
+       });
     }
-    $('#mensaje2 span').html(texto);
-    $('#mensaje2').insertAfter(lugar);
-    $('#mensaje2').slideToggle("slow", function(){
-      window.setTimeout(function() {
-	    window.location.replace(url);
-	}, 4000);
-    });
-
- }
-
-   function controlFooter(){ 
-     /*el alto que tiene el navegador*/
-     $alto_navegador= $(window).height();
-     /*el alto que tiene el contenido de la pagina*/
-     $alto_documento= $(document).height(); 
-     /*  aqui condicionamos si el alto del contenido 
-      *  es mayor que
-      *  el alto del navegador*/
-     if ($alto_documento>$alto_navegador){
-         $("#footer").css({"bottom":"auto"})
-     }else if($alto_documento>=$alto_navegador){
-         $("#footer").css({"bottom":"0px"})
-     } 
- }//controlFooter

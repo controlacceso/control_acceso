@@ -322,58 +322,54 @@ $('#resultado').on("click","#btnModificar",function () {
 
 });//ready
 
-function showAlertValidate(lugar,texto) {
-    $('#mensaje').attr('class','alert alert-warning fade in');
-    $('#mensaje span').html(texto);
-    $('#mensaje').insertAfter(lugar);
-    $('#mensaje').show(1000, function(){
-                });
+    function controlFooter(){ 
+        /*el alto que tiene el navegador*/
+        $alto_navegador= $(window).height();
+        /*el alto que tiene el contenido de la pagina*/
+        $alto_documento= $(document).height(); 
+        /*  aqui condicionamos si el alto del contenido 
+          *  es mayor que
+          *  el alto del navegador*/
+        if ($alto_documento>$alto_navegador){
+             $("#footer").css({"bottom":"auto"})
+        }else if($alto_documento>=$alto_navegador){
+             $("#footer").css({"bottom":"0px"})
+        } 
+     }//controlFooter
+
+    function showAlertValidate(lugar,texto) {
+        $('#mensaje').attr('class','alert alert-warning fade in');
+        $('#mensaje span').html(texto);
+        $('#mensaje').insertAfter(lugar);
+        $('#mensaje').show(1000, function(){        
+        });
     }
 
-
-function showAlert(lugar,tipo,texto) {
-
-    if (tipo=="error"){
+    function showAlert(lugar,tipo,texto) {
+       if (tipo=="error"){
         $('#mensaje').attr('class','alert alert-danger fade in');
-    }else {
+       } else {
         $('#mensaje').attr('class','alert alert-success fade in');
+       }
+       $('#mensaje span').html(texto);
+       $('#mensaje').insertAfter(lugar);
+       $('#mensaje').show(1000, function(){
+
+       });
     }
-    $('#mensaje span').html(texto);
-    $('#mensaje').insertAfter(lugar);
-    $('#mensaje').show(1000, function(){
-                });
 
-    }
-
-function showAlertRedirect(lugar,tipo,texto,url) {
-
-    if (tipo=="error"){
-        $('#mensaje2').attr('class','alert alert-danger fade in');
-    }else {
+    function showAlertRedirect(lugar,tipo,texto,url) {
+       if (tipo=="error"){
+         $('#mensaje2').attr('class','alert alert-danger fade in');
+       } else {
         $('#mensaje2 strong').html(' ');
         $('#mensaje2').attr('class','alert alert-success fade in');
+       }
+       $('#mensaje2 span').html(texto);
+       $('#mensaje2').insertAfter(lugar);
+       $('#mensaje2').slideToggle("slow", function(){
+        window.setTimeout(function() {
+         window.location.replace(url);   
+        }, 4000);
+       });
     }
-    $('#mensaje2 span').html(texto);
-    $('#mensaje2').insertAfter(lugar);
-    $('#mensaje2').slideToggle("slow", function(){
-      window.setTimeout(function() {
-	    window.location.replace(url);
-	}, 4000);
-    });
-
- }
-
-  function controlFooter(){ 
-     /*el alto que tiene el navegador*/
-     $alto_navegador= $(window).height();
-     /*el alto que tiene el contenido de la pagina*/
-     $alto_documento= $(document).height(); 
-     /*  aqui condicionamos si el alto del contenido 
-      *  es mayor que
-      *  el alto del navegador*/
-     if ($alto_documento>$alto_navegador){
-         $("#footer").css({"bottom":"auto"})
-     }else if($alto_documento>=$alto_navegador){
-         $("#footer").css({"bottom":"0px"})
-     } 
- }//controlFooter
