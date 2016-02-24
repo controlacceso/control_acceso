@@ -152,7 +152,7 @@ $('img').attr("src",'/images/sshot-1.png');
 			            })        
 	        }//submitHandler
 	    });//Validate
-	});
+	});//$('#resultado').on("click","#btnModificar",function () {
 
 	
 	//Funcion con ajax para recoger datos alumnos y crear tabla
@@ -227,7 +227,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				console.log("error borrar");
 			})//fail
 		}//if confirm
-	});//click borrar formulario alumno
+	});//$('#resultado').on("click","#btnBorrar",function(event) {
 
 
 		function buscarTodosLosIdNombreApellidosAlumno (id_alumno) {
@@ -312,7 +312,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 		console.log("error");
 		})//fail
-	}//function buscarTodosLosGrupos
+	}//function mostrarHorarioGrupo
 });//ready
 
     function controlFooter(){ 
@@ -336,7 +336,7 @@ $('img').attr("src",'/images/sshot-1.png');
         $('#mensaje').insertAfter(lugar);
         $('#mensaje').show(1000, function(){        
         });
-    }
+    }//showAlertValidate
 
     function showAlert(lugar,tipo,texto) {
        if (tipo=="error"){
@@ -349,7 +349,7 @@ $('img').attr("src",'/images/sshot-1.png');
        $('#mensaje').show(1000, function(){
 
        });
-    }
+    }//showAlert
 
     function showAlertRedirect(lugar,tipo,texto,url) {
        if (tipo=="error"){
@@ -365,4 +365,4 @@ $('img').attr("src",'/images/sshot-1.png');
          window.location.replace(url);   
         }, 4000);
        });
-    }
+    }//showAlertRedirect

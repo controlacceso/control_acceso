@@ -204,12 +204,12 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
     		console.log("error crear formulario");
 		});
-	});//Formulario modificar y borrar
+	});//$('#resultado').on("click",".celda",function () {
 	
 	$('#resultado').on('keydown','#passwordProfesor', function(event) {
 		$('#resultado #divpasswordnuevo').show();
 		$('#resultado #divpasswordnuevorepetido').show();
-	});
+	});//$('#resultado').on('keydown','#passwordProfesor', function(event) {
 
 	$('#resultado').on("click","#btnModificar",function () {
 		$("#formUpdate").validate({
@@ -509,7 +509,7 @@ $('img').attr("src",'/images/sshot-1.png');
 	        }//submitHandler
 	    });//Validate
 	  //$( "#target" ).submit();
-	});
+	});//$('#resultado').on("click","#btnModificar",function () {
 
 		//Funcion con buscar asignaturas
 	function buscarAsignaturasQueImparte (id) {
@@ -544,7 +544,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 			console.log("error");
 		})//fail
-	}//function buscarAsignaturas
+	}//function buscarAsignaturasQueImparte
 
 
 		//Funcion con buscar asignaturas
@@ -575,7 +575,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 			console.log("error");
 		})//fail
-	}//function buscarAsignaturas
+	}//function buscarTodasLasAsignaturas
 	
 			//Funcion con buscar asignaturas
 	function buscarAsignaturasQueNoImpartePorTipo (id,tipo) {
@@ -605,7 +605,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		.fail(function() {
 			console.log("error");
 		})//fail
-	}//function buscarAsignaturas
+	}//function buscarAsignaturasQueNoImpartePorTipo
 	
 	//Funcion con ajax para recoger datos alumnos y crear tabla
 	function buscarProfesores () {
@@ -650,7 +650,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				.fail(function() {
 					console.log("error");
 				})//fail
-	}//function buscarProfesores
+	}//function buscarProfesorPorId
 
 	
 			//Al clicar en borrar el alumno
@@ -676,7 +676,7 @@ $('img').attr("src",'/images/sshot-1.png');
 				console.log("error borrar");
 			})//fail
 		}//if confirm
-	});//click borrar formulario alumno
+	});//$('#resultado').on("click","#btnBorrar",function(event) {
 
 
 	//cambiar select
@@ -692,7 +692,7 @@ $('img').attr("src",'/images/sshot-1.png');
 		 	//alert("has elegido todas");
 		 	buscarTodasLasAsignaturas($('#resultado #Id_profesor').val());
 		 }
-		});//click borrar formulario alumno
+		});//$('#resultado').on("change","#tipo",function(event) {
 
 	
 });//ready
