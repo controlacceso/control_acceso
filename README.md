@@ -240,8 +240,8 @@ Cuando abrimos la pagina aparece un buscador de profesores, escribimos el nombre
 <td align="left">id_alumno,dni,nombre,apellidos,correo,num_tarjeta,tarjeta_activada</td>
 </tr>
 <tr class="odd">
-<td align="left">/modificarPresenciaDelAlumno</td>
-<td align="left">num_tarjeta</td>
+<td align="left">/presencia</td>
+<td align="left">num_tarjeta,room(num_dispositivo)</td>
 </tr>
 <tr class="even">
 <td align="left">/borrarAlumno</td>
